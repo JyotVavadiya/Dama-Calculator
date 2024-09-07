@@ -1,6 +1,7 @@
 import 'package:damacalculator/login/login_screen.dart';
 import 'package:damacalculator/service/pref_services.dart';
 import 'package:damacalculator/splash/splash_screen.dart';
+import 'package:damacalculator/utils/color_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+
       title: 'Dama Calculator',
         debugShowCheckedModeBanner: false,
 

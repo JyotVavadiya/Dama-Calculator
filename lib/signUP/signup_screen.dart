@@ -16,12 +16,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:intl/intl.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({super.key});
 
   final SignUpController controller = Get.put(SignUpController());
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> _signupformKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class SignupScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Form(
-                      key: _formKey,
+                      key: _signupformKey,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -56,7 +58,7 @@ class SignupScreen extends StatelessWidget {
                             height: 20,
                           ),
                           const Text(
-                            StringRes.loginMsg,
+                            StringRes.signUpMsg,
                             style: TextStyle(
                                 fontSize: 14,
                                 color: ColorRes.hint,
@@ -94,21 +96,29 @@ class SignupScreen extends StatelessWidget {
 
                           ///  ---------- date of birth field
 
-                          CustomTextFormField(
-                              controller: controller.dateOfBirthController,
-                              hintText: StringRes.dateOfBirth,
-                              enable: false,
-                              readOnly: true,
-                              onTap: () {
-                                controller.onTapPickDatePlayer(
-                                    context: context);
-                              },
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return "Please select date of birth".tr;
-                                }
-                                return null;
-                              }),
+
+                             CustomTextFormField(
+                                controller: controller.dateOfBirthController,
+                                hintText: StringRes.dateOfBirth,
+                                enable: false,
+                                readOnly: true,
+                                onTap: () async{
+                                  DateTime? pickedDate = await showDatePicker(
+                                    context: context,
+                                    lastDate: DateTime.now(),
+                                    firstDate: DateTime(1980),
+                                    initialDate: DateTime.now(),
+                                  );
+                                  if (pickedDate == null) return;
+                                  controller.dateOfBirthController.text = DateFormat('yyyy-MM-dd').format(pickedDate);
+                                },
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return "Please select date of birth".tr;
+                                  }
+                                  return null;
+                                }),
+
                           const SizedBox(height: 20),
 
                           ///  ---------- email text field
@@ -116,8 +126,9 @@ class SignupScreen extends StatelessWidget {
                               controller: controller.emailController,
                               hintText: StringRes.email,
                               textInputType: TextInputType.emailAddress,
+
                               validator: (value) {
-                                if (value != null ||
+                                if (value == null ||
                                     (!isValidEmail(value, isRequired: true))) {
                                   return "Please enter valid email address.";
                                 }
@@ -169,13 +180,11 @@ class SignupScreen extends StatelessWidget {
                           ///------ signup button
                           CustomElevatedButton(
                               text: StringRes.signUp,
-                              onPressed: controller.loader.value
-                                  ? () {}
-                                  : () async {
-                                      if (_formKey.currentState!.validate()) {
+                              onPressed: ()  {
+                                      if (_signupformKey.currentState!.validate()) {
                                         PrefService.setValue(
                                             PrefKeys.isLogin, true);
-                                        Get.to(const DashboardScreen());
+                                        Get.to(()=>const DashboardScreen());
 
                                       }
                                     }),

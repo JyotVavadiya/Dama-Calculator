@@ -7,9 +7,7 @@ class StringRes {
    static const password = "Password";
    static const userName = "User name";
    static const mobileNumber = "Mobile number";
-
    static const dateOfBirth = "Date of birth";
-
    static const signUp = "SIGN UP";
    static const doNotAccount  = "Don’t have an account? ";
    static const alreadyAccount  = "Already have an account? ";

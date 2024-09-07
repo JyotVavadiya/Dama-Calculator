@@ -27,14 +27,7 @@ class SignUpController extends GetxController{
 
 
   Future<void> onTapPickDatePlayer({required BuildContext context}) async {
-    DateTime? pickedDate = await showDatePicker(
-      context: context,
-      lastDate: DateTime.now(),
-      firstDate: DateTime(1980),
-      initialDate: DateTime.now(),
-    );
-    if (pickedDate == null) return;
-    dateOfBirthController.text = DateFormat('yyyy-MM-dd').format(pickedDate);
+
     update(["player"]);
   }
 
