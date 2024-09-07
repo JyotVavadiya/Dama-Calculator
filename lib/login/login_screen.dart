@@ -5,16 +5,19 @@ import 'package:damacalculator/commons/text_filled.dart';
 import 'package:damacalculator/commons/validation_functions.dart';
 import 'package:damacalculator/dashboard/dashboard_screen.dart';
 import 'package:damacalculator/login/login_controller.dart';
+import 'package:damacalculator/service/pref_services.dart';
+import 'package:damacalculator/signUP/signup_screen.dart';
 import 'package:damacalculator/utils/assets_res.dart';
 import 'package:damacalculator/utils/color_res.dart';
+import 'package:damacalculator/utils/pref_key.dart';
 import 'package:damacalculator/utils/string_res.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class LoinScreen extends StatelessWidget {
-  LoinScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  LoginScreen({super.key});
 
   final LoginController loginController = Get.put(LoginController());
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -124,6 +127,8 @@ class LoinScreen extends StatelessWidget {
                               onPressed: loginController.loader.value ? (){} : () async{
                                 if (_formKey.currentState!.validate()) {
                                  Get.to(const DashboardScreen());
+                                 PrefService.setValue(PrefKeys.isLogin, true);
+
                                 }
 
                               }),
@@ -137,11 +142,11 @@ class LoinScreen extends StatelessWidget {
                                     child: Text(StringRes.doNotAccount, style: TextStyle( color: ColorRes.grey))),
                                 GestureDetector(
                                     onTap: () {
-
+                                          Get.to(SignupScreen());
                                     },
                                     child: const Padding(
                                         padding: EdgeInsets.only(left: 4),
-                                        child: Text(StringRes.signUp, style: TextStyle(color: ColorRes.themColor))))
+                                        child: Text(StringRes.signUp, style: TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500))))
                               ])
                         ],
                       ),

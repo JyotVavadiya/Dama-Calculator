@@ -1,4 +1,8 @@
+import 'package:damacalculator/login/login_screen.dart';
+import 'package:damacalculator/service/pref_services.dart';
+import 'package:damacalculator/utils/pref_key.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -9,7 +13,12 @@ class DashboardScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Text("hello")
+            InkWell(
+              onTap: (){
+                PrefService.setValue(PrefKeys.isLogin, false);
+                Get.offAll(LoginScreen());
+              },
+                child: Text("log out"))
           ],
         ),
       ),
