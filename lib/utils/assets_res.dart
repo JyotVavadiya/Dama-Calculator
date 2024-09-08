@@ -10,6 +10,8 @@ class AssetRes {
 
 ///--------------------------------------------- image ---------------------------------------------
   static const email = "${images}email.png";
-  static String imgIcEye = '$images/img_ic_eye.svg';
-  static String imgIcEyeClose = '$images/eye_close_icon.svg';
+  static const imgIcEye = '${images}img_ic_eye.svg';
+  static const imgIcEyeClose = '${images}eye_close_icon.svg';
+  static const location = "${images}location.png";
+  static const phone = "${images}phone.png";
 }

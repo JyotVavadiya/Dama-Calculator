@@ -96,8 +96,7 @@ class LoginScreen extends StatelessWidget {
                                       margin: const EdgeInsets.fromLTRB(
                                           30, 18, 18, 18),
                                       child: Container(
-                                      height: 20,
-                                      width: 20,
+
                           child: SvgPicture.asset(
                                     !loginController.isShowPassword.value?AssetRes.imgIcEye:AssetRes.imgIcEyeClose,
                           height: 20,
@@ -107,7 +106,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           ),),),
 
-                              suffixConstraints: const BoxConstraints(maxHeight: 50),
+
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return "Please enter valid password.";

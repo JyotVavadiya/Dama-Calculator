@@ -120,7 +120,7 @@ class CustomTextFormField extends StatelessWidget {
   );
   InputDecoration get decoration => InputDecoration(
         hintText: hintText ?? "",
-        hintStyle: hintStyle ?? TextStyle(color: ColorRes.hint, fontSize: 14),
+        hintStyle: hintStyle ?? TextStyle(color: ColorRes.hint, fontSize: 14, fontWeight: FontWeight.normal),
         //prefixIcon: prefix,
         prefix: prefix,
         prefixIconConstraints: prefixConstraints,

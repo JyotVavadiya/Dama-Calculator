@@ -12,4 +12,20 @@ class StringRes {
    static const doNotAccount  = "Don’t have an account? ";
    static const alreadyAccount  = "Already have an account? ";
 
+
+
+   static const productionCalculation = "Production Calculation";
+   static const labourWork = "Labour work";
+   static const aboutUs = "About us";
+   static const contactUs = "Contact us";
+   static const setting = "Settings";
+
+   static const editProfile = "Edit profile";
+   static const logOut = "Log out";
+   static const selectLanguage = "Select language";
+
+
+   static const english = "English";
+   static const hindi = "Hindi";
+
 }
