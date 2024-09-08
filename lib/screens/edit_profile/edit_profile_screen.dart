@@ -51,7 +51,11 @@ class EditProfileScreen extends StatelessWidget {
                           ),
                          Row(
                            children: [
-                             Icon(Icons.arrow_back_rounded),
+                             GestureDetector(
+                               onTap: (){
+                                 Get.back();
+                               },
+                                 child: Icon(Icons.arrow_back_rounded, color: ColorRes.themColor)),
                              SizedBox(width: 20,),
                              const Text(
                                StringRes.editProfile,
@@ -83,7 +87,9 @@ class EditProfileScreen extends StatelessWidget {
                           const SizedBox(height: 20),
 
                           ///  ---------- phone field
-                             Text(StringRes.mobileNumber, style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 16, fontWeight: FontWeight.w500),),
+                             Padding(
+                                 padding: EdgeInsets.only(left: 10),
+                                 child: Text(StringRes.mobileNumber, style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 16, fontWeight: FontWeight.w500),)),
                                                    SizedBox(height: 5),
                           CustomTextFormField(
                               controller: controller.mobileNumberController,
@@ -101,7 +107,9 @@ class EditProfileScreen extends StatelessWidget {
 
                           ///  ---------- date of birth field
 
-                          Text(StringRes.dateOfBirth, style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 16, fontWeight: FontWeight.w500),),
+                          Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text(StringRes.dateOfBirth, style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 16, fontWeight: FontWeight.w500),)),
                           SizedBox(height: 5),
                              CustomTextFormField(
                                 controller: controller.dateOfBirthController,
@@ -136,7 +144,7 @@ class EditProfileScreen extends StatelessWidget {
                               controller: controller.emailController,
                               hintText: StringRes.email,
                               textInputType: TextInputType.emailAddress,
-                              fillColor: Colors.grey.withOpacity(0.5),
+                              fillColor: Colors.grey.withOpacity(0.3),
                               enable: false,
                               validator: (value) {
                                 if (value == null ||
@@ -156,7 +164,7 @@ class EditProfileScreen extends StatelessWidget {
                               text: StringRes.update,
                               onPressed: ()  {
                                       if (_signupformKey.currentState!.validate()) {
-
+                                      Get.back();
 
                                       }
                                     }),
