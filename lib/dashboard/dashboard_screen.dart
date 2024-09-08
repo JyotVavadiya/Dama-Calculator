@@ -81,9 +81,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 style: controller.index.value == 0
                     ? TextStyle(
                     color: ColorRes.themColor,
-                    fontWeight: FontWeight.w500)
+                    fontWeight: FontWeight.w500, fontSize: 18)
                     : TextStyle(
                   color: ColorRes.grey,
+                    fontSize: 18
                 ),
               ),
               onTap: () {
@@ -93,8 +94,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             ListTile(
               title:  Text(StringRes.labourWork,
-                style: controller.index.value == 1 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500)
-                    : TextStyle(color:   ColorRes.grey,),
+                style: controller.index.value == 1 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500,fontSize: 18)
+                    : TextStyle(color:   ColorRes.grey,fontSize: 18),
               ),
               onTap: () {
                 controller.index.value = 1;
@@ -103,8 +104,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             ListTile(
               title:  Text(StringRes.aboutUs,
-                style: controller.index.value == 2 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500)
-                    : TextStyle(color:   ColorRes.grey,),
+                style: controller.index.value == 2 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500, fontSize: 18)
+                    : TextStyle(color:   ColorRes.grey,fontSize: 18),
               ),
               onTap: () {
                 controller.index.value = 2;
@@ -113,8 +114,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             ListTile(
               title:  Text(StringRes.contactUs,
-                style: controller.index.value == 3 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500)
-                    : TextStyle(color:   ColorRes.grey,),
+                style: controller.index.value == 3 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500, fontSize: 18)
+                    : TextStyle(color:   ColorRes.grey, fontSize: 18),
               ),
               onTap: () {
                 controller.index.value = 3;
@@ -123,8 +124,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             ListTile(
               title:  Text(StringRes.setting,
-                style: controller.index.value == 4 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500)
-                    : TextStyle(color:   ColorRes.grey,),
+                style: controller.index.value == 4 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500, fontSize: 18)
+                    : TextStyle(color:   ColorRes.grey,fontSize: 18),
               ),
               onTap: () {
                 controller.index.value = 4;

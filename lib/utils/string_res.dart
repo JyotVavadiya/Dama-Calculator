@@ -28,4 +28,12 @@ class StringRes {
    static const english = "English";
    static const hindi = "Hindi";
 
+   static const reed = "Enter reed";
+   static const pick = "Enter pick";
+   static const time = "Enter time";
+   static const efficiency  = "Enter efficiency";
+   static const calculate  = "Calculate";
+   static const update = "Update";
+
+
 }

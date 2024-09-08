@@ -1,4 +1,5 @@
 import 'package:damacalculator/login/login_screen.dart';
+import 'package:damacalculator/screens/edit_profile/edit_profile_screen.dart';
 import 'package:damacalculator/screens/setting/setting_controller.dart';
 import 'package:damacalculator/service/pref_services.dart';
 import 'package:damacalculator/utils/color_res.dart';
@@ -6,6 +7,7 @@ import 'package:damacalculator/utils/pref_key.dart';
 import 'package:damacalculator/utils/string_res.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -20,32 +22,37 @@ class Setting extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          SizedBox(height: 30),
-         Container(
-           height: 45,
-           width: Get.width,
-           padding: EdgeInsets.symmetric(horizontal: 20),
-           alignment: Alignment.centerLeft,
-           decoration: BoxDecoration(
-             color: Colors.white,
-             borderRadius: BorderRadius.circular(10),
+          SizedBox(height: 40),
+         GestureDetector(
+           onTap: (){
+             Get.to(()=>EditProfileScreen());
+           },
+           child: Container(
+             height: 45,
+             width: Get.width,
+             padding: EdgeInsets.symmetric(horizontal: 20),
+             alignment: Alignment.centerLeft,
+             decoration: BoxDecoration(
+               color: Colors.white,
+               borderRadius: BorderRadius.circular(10),
 
-             boxShadow: [
-               BoxShadow(
-                 color: Colors.grey.withOpacity(0.3),
-                 spreadRadius: 2,
-                 blurRadius: 5,
-                 offset: Offset(0, 3), // changes position of shadow
-               ),
-             ],
+               boxShadow: [
+                 BoxShadow(
+                   color: Colors.grey.withOpacity(0.3),
+                   spreadRadius: 2,
+                   blurRadius: 5,
+                   offset: Offset(0, 3), // changes position of shadow
+                 ),
+               ],
+             ),
+             child:  Row(
+               children: [
+                 Text(StringRes.editProfile, style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 16)),
+                 Spacer(),
+                 Icon(Icons.edit_outlined, color: Colors.black.withOpacity(0.7),)
+               ],
+             )
            ),
-           child:  Row(
-             children: [
-               Text(StringRes.editProfile, style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 16)),
-               Spacer(),
-               Icon(Icons.edit_outlined, color: Colors.black.withOpacity(0.7),)
-             ],
-           )
          ),
           SizedBox(height: 20),
 

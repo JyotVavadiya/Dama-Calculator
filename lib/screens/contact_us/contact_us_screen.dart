@@ -13,7 +13,7 @@ class ContactUs extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          SizedBox(height: 30),
+          SizedBox(height: 40),
            Row(
              children: [
                Image.asset(AssetRes.email, height: 22, color: Colors.black.withOpacity(0.7)),
@@ -26,7 +26,7 @@ class ContactUs extends StatelessWidget {
             children: [
               Image.asset(AssetRes.phone, height: 22, color: Colors.black.withOpacity(0.7)),
               SizedBox(width: 20),
-              Text("+917454754637", style: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 16),)
+              Text("+913454754637", style: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 16),)
             ],
           ),
           SizedBox(height: 20),
