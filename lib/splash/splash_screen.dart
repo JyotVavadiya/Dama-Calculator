@@ -13,8 +13,8 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SizedBox(
-        width: Get.width,
-        height: Get.height,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: Lottie.asset(
             '${AssetRes.splashVideo}',
             fit: BoxFit.fill

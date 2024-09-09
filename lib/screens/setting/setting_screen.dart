@@ -1,3 +1,4 @@
+import 'package:damacalculator/dashboard/dashboard_controller.dart';
 import 'package:damacalculator/login/login_screen.dart';
 import 'package:damacalculator/screens/edit_profile/edit_profile_screen.dart';
 import 'package:damacalculator/screens/setting/setting_controller.dart';
@@ -160,7 +161,11 @@ class Setting extends StatelessWidget {
                           child: Text("Yes", style: TextStyle(fontSize: 18, color: Colors.black)),
                           onPressed: () {
                              PrefService.setValue(PrefKeys.isLogin, false);
-                             Get.offAll(LoginScreen());
+                             //Get.offAll(LoginScreen());
+
+                            DashboardController dashboardController = Get.put(DashboardController());
+                            dashboardController.index.value = 1;
+                            Get.back();
                           },
                         )
                       ],

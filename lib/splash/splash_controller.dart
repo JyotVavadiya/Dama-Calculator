@@ -17,11 +17,13 @@ class SplashController extends GetxController{
   
   splash() async{
     await Future.delayed(Duration(seconds: 6), (){
-      if(PrefService.getBool(PrefKeys.isLogin)){
-        Get.to(DashboardScreen());
-      } else{
-        Get.to(LoginScreen());
-      }
+      // if(PrefService.getBool(PrefKeys.isLogin)){
+      //   Get.to(DashboardScreen());
+      // } else{
+      //   Get.to(LoginScreen());
+      // }
+
+      Get.to(DashboardScreen());
 
     });
   }

@@ -198,7 +198,8 @@ class SignupScreen extends StatelessWidget {
                                             TextStyle(color: ColorRes.grey))),
                                 GestureDetector(
                                     onTap: () {
-                                      Get.to(LoginScreen());
+                                      //Get.to(LoginScreen());
+                                      Get.back();
                                     },
                                     child: const Padding(
                                         padding: EdgeInsets.only(left: 4),
