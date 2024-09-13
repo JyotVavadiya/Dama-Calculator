@@ -1,3 +1,4 @@
+import 'package:damacalculator/dashboard/dashboard_screen.dart';
 import 'package:damacalculator/login/login_screen.dart';
 import 'package:damacalculator/service/pref_services.dart';
 import 'package:damacalculator/splash/splash_screen.dart';
@@ -23,8 +24,7 @@ class MyApp extends StatelessWidget {
 
       title: 'Dama Calculator',
         debugShowCheckedModeBanner: false,
-
-      home: SplashScreen()
+      home: DashboardScreen()//SplashScreen()
     );
   }
 }

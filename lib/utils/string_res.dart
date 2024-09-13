@@ -28,11 +28,22 @@ class StringRes {
    static const english = "English";
    static const hindi = "Hindi";
 
-   static const reed = "Enter reed";
-   static const pick = "Enter pick";
-   static const time = "Enter time";
-   static const efficiency  = "Enter efficiency";
+   static const motorRPM = "Motor RPM";
+   static const enterMotorRPM = "Enter Motor RPM";
+   static const pulleyDiameter = "Pulley Diameter(mm)";
+   static const enterPulleyDiameter = "Enter Pulley Diameter(mm)";
+   static const loomPulleyDiameter = "Loom Pulley Diameter(mm)";
+   static const enterLoomPulleyDiameter = "Enter Loom Pulley Diameter(mm)";
+   static const efficiency  = "Efficiency(%)";
+   static const enterEfficiency  = "Enter efficiency(%)";
+   static const pick  = "Pick";
+   static const enterPick  = "Enter pick";
+   static const RPM = "RPM";
+   static const enterRPM = "Enter RPM";
+   static const calculateRPM  = "Calculate RPM";
+   static const calculateProduction  = "Calculate production";
    static const calculate  = "Calculate";
+   static const production = "Production";
    static const update = "Update";
 
 

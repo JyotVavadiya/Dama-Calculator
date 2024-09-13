@@ -18,6 +18,7 @@ class SplashScreen extends StatelessWidget {
         child: Lottie.asset(
             '${AssetRes.splashVideo}',
             fit: BoxFit.fill
+            //fit: BoxFit.cover
         )
       ),
     );
