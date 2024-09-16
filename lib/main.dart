@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
 
       title: 'Dama Calculator',
         debugShowCheckedModeBanner: false,
-      home: DashboardScreen()//SplashScreen()
+      home: SplashScreen()
     );
   }
 }
