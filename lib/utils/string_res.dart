@@ -15,6 +15,7 @@ class StringRes {
 
 
    static const productionCalculation = "Production Calculation";
+   static const fabricCosting = "Fabric Costing";
    static const labourWork = "Labour work";
    static const aboutUs = "About us";
    static const contactUs = "Contact us";
@@ -27,6 +28,7 @@ class StringRes {
 
    static const english = "English";
    static const hindi = "Hindi";
+   static const gujarati = "Gujarati";
 
    static const motorRPM = "Motor RPM";
    static const enterMotorRPM = "Enter Motor RPM";
@@ -45,6 +47,19 @@ class StringRes {
    static const calculate  = "Calculate";
    static const production = "Production";
    static const update = "Update";
+
+   static const selectNumbersOfFeeder = "Select numbers of feeder";
+   static const selectNumbersOfBeam = "Select numbers of beam";
+
+   static const enterDenier = "Enter Denier";
+   static const enterYarnRate = "Enter Yarn Rate(₹)";
+   static const enterFabricWidth = "Enter Fabric Width(inch)";
+
+   static const enterEnd = "Enter Ends";
+
+
+   static const feeder = "Feeder";
+   static const beam = "Beam";
 
 
 }

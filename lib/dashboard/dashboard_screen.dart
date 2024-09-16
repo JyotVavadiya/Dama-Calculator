@@ -5,6 +5,7 @@ import 'package:damacalculator/dashboard/dashboard_controller.dart';
 import 'package:damacalculator/login/login_screen.dart';
 import 'package:damacalculator/screens/about_us/about_us_screen.dart';
 import 'package:damacalculator/screens/contact_us/contact_us_screen.dart';
+import 'package:damacalculator/screens/fabric_costing/fabric_costing_screen.dart';
 import 'package:damacalculator/screens/labour_work/labour_work_screen.dart';
 import 'package:damacalculator/screens/production/production_screen.dart';
 import 'package:damacalculator/screens/setting/setting_screen.dart';
@@ -41,18 +42,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: ColorRes.themColor,
-        title: controller.index.value == 0 ? Text(StringRes.productionCalculation)
-            : controller.index.value == 1 ? Text(StringRes.labourWork)
-            : controller.index.value == 2 ? Text(StringRes.aboutUs)
-            : controller.index.value == 3 ? Text(StringRes.contactUs)
-            : controller.index.value == 4 ? Text(StringRes.setting) :  Text(StringRes.productionCalculation) ,
-        titleTextStyle: TextStyle(color: ColorRes.white, fontSize: 18),
+        title: controller.index.value == 0 ? const Text(StringRes.productionCalculation)
+             : controller.index.value == 1 ? const Text(StringRes.fabricCosting)
+            : controller.index.value == 2 ? const Text(StringRes.labourWork)
+            : controller.index.value == 3 ? const Text(StringRes.aboutUs)
+            : controller.index.value == 4 ? const Text(StringRes.contactUs)
+            : controller.index.value == 5 ? const Text(StringRes.setting) :  const Text(StringRes.productionCalculation) ,
+        titleTextStyle: const TextStyle(color: ColorRes.white, fontSize: 18),
         centerTitle: true,
         leading: GestureDetector(
           onTap: (){
             _scaffoldKey.currentState?.openDrawer();
           },
-          child: Icon(Icons.menu_rounded, color: Colors.white),
+          child: const Icon(Icons.menu_rounded, color: Colors.white),
         ),
       ),
       drawer: Drawer(
@@ -60,7 +62,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Obx(() => ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
+            const DrawerHeader(
                 decoration: BoxDecoration(
                   color: ColorRes.themColor,
                 ),
@@ -79,10 +81,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ListTile(
               title:  Text(StringRes.productionCalculation,
                 style: controller.index.value == 0
-                    ? TextStyle(
+                    ? const TextStyle(
                     color: ColorRes.themColor,
                     fontWeight: FontWeight.w500, fontSize: 18)
-                    : TextStyle(
+                    : const TextStyle(
                   color: ColorRes.grey,
                     fontSize: 18
                 ),
@@ -93,9 +95,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
             ),
             ListTile(
-              title:  Text(StringRes.labourWork,
-                style: controller.index.value == 1 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500,fontSize: 18)
-                    : TextStyle(color:   ColorRes.grey,fontSize: 18),
+              title:  Text(StringRes.fabricCosting,
+                style: controller.index.value == 1
+                    ? const TextStyle(
+                    color: ColorRes.themColor,
+                    fontWeight: FontWeight.w500, fontSize: 18)
+                    : const TextStyle(
+                    color: ColorRes.grey,
+                    fontSize: 18
+                ),
               ),
               onTap: () {
                 controller.index.value = 1;
@@ -103,9 +111,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
             ),
             ListTile(
-              title:  Text(StringRes.aboutUs,
-                style: controller.index.value == 2 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500, fontSize: 18)
-                    : TextStyle(color:   ColorRes.grey,fontSize: 18),
+              title:  Text(StringRes.labourWork,
+                style: controller.index.value == 2 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500,fontSize: 18)
+                    : const TextStyle(color:   ColorRes.grey,fontSize: 18),
               ),
               onTap: () {
                 controller.index.value = 2;
@@ -113,9 +121,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
             ),
             ListTile(
-              title:  Text(StringRes.contactUs,
-                style: controller.index.value == 3 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500, fontSize: 18)
-                    : TextStyle(color:   ColorRes.grey, fontSize: 18),
+              title:  Text(StringRes.aboutUs,
+                style: controller.index.value == 3 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500, fontSize: 18)
+                    : const TextStyle(color:   ColorRes.grey,fontSize: 18),
               ),
               onTap: () {
                 controller.index.value = 3;
@@ -123,12 +131,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
             ),
             ListTile(
-              title:  Text(StringRes.setting,
-                style: controller.index.value == 4 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500, fontSize: 18)
-                    : TextStyle(color:   ColorRes.grey,fontSize: 18),
+              title:  Text(StringRes.contactUs,
+                style: controller.index.value == 4 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500, fontSize: 18)
+                    : const TextStyle(color:   ColorRes.grey, fontSize: 18),
               ),
               onTap: () {
                 controller.index.value = 4;
+                _scaffoldKey.currentState?.closeDrawer();
+              },
+            ),
+            ListTile(
+              title:  Text(StringRes.setting,
+                style: controller.index.value == 5 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500, fontSize: 18)
+                    : const TextStyle(color:   ColorRes.grey,fontSize: 18),
+              ),
+              onTap: () {
+                controller.index.value = 5;
                 _scaffoldKey.currentState?.closeDrawer();
               },
             ),
@@ -145,7 +163,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             //         child: Text("Logout", style: TextStyle(fontSize: 18, color: ColorRes.themColor, fontWeight: FontWeight.w600),))
             //   ),
             // ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         )),
       ),
@@ -156,16 +174,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
               builder: (BuildContext context) {
                 return AlertDialog(
                   backgroundColor: Colors.white,
-                  title: Text("Are you sure you want exit app ?", style: TextStyle(fontSize: 20, color: Colors.black)),
+                  title: const Text("Are you sure you want exit app ?", style: TextStyle(fontSize: 20, color: Colors.black)),
                   actions: <Widget>[
                     TextButton(
-                      child: Text("No",style: TextStyle(fontSize: 18, color: Colors.black)),
+                      child: const Text("No",style: TextStyle(fontSize: 18, color: Colors.black)),
                       onPressed: () {
                         Get.back();
                       },
                     ),
                     TextButton(
-                      child: Text("Yes", style: TextStyle(fontSize: 18, color: Colors.black)),
+                      child: const Text("Yes", style: TextStyle(fontSize: 18, color: Colors.black)),
                       onPressed: () {
                         exit(0);
                       },
@@ -180,10 +198,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
         child: SafeArea(
           child: controller.index.value == 0 ? Production()
-              : controller.index.value == 1 ? LabourWork()
-              : controller.index.value == 2 ? AboutUs()
-              : controller.index.value == 3 ? ContactUs()
-              : controller.index.value == 4 ? Setting() : Production() ,
+              : controller.index.value == 1 ?  FabricCostingScreen()
+              : controller.index.value == 2 ? const LabourWork()
+              : controller.index.value == 3 ? const AboutUs()
+              : controller.index.value == 4 ? const ContactUs()
+              : controller.index.value == 5 ? Setting() : Production() ,
         ),
       ),
     ));

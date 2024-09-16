@@ -92,6 +92,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget get textFormFieldWidget => InkWell(
     onTap: onTap,
     child: Container(
+
           width: width ?? double.maxFinite,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
@@ -105,6 +106,7 @@ class CustomTextFormField extends StatelessWidget {
             ],
           ),
           child: TextFormField(
+
             controller: controller,
             enabled: enable ?? true,
             readOnly: readOnly ?? false,
@@ -115,6 +117,7 @@ class CustomTextFormField extends StatelessWidget {
             maxLines: maxLines ?? 1,
             decoration: decoration,
             validator: validator,
+
           ),
         ),
   );
@@ -122,6 +125,7 @@ class CustomTextFormField extends StatelessWidget {
         hintText: hintText ?? "",
         hintStyle: hintStyle ?? TextStyle(color: ColorRes.hint, fontSize: 14, fontWeight: FontWeight.normal),
         //prefixIcon: prefix,
+
         prefix: prefix,
         prefixIconConstraints: prefixConstraints,
         suffixIcon: suffix,
@@ -130,6 +134,8 @@ class CustomTextFormField extends StatelessWidget {
         contentPadding: contentPadding ?? EdgeInsets.symmetric(horizontal: 16, vertical: 18),
         fillColor: fillColor ?? ColorRes.white,
         filled: filled,
+    errorMaxLines: 2,
+
         // border: borderDecoration ?? OutlineInputBorder(borderRadius: BorderRadius.circular(16,), borderSide: BorderSide(color: ColorRes.themColor, width: 1), ),
     border: borderDecoration ?? OutlineInputBorder(borderRadius: BorderRadius.circular(16,), borderSide: BorderSide.none),
         enabledBorder: borderDecoration ??
@@ -150,6 +156,6 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(color: Colors.red, width: 1),
         ),
-        errorStyle: TextStyle(color: Colors.red, fontSize: 14),
+        errorStyle: TextStyle(color: Colors.red, fontSize: 14, ),
       );
 }

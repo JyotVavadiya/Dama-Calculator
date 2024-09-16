@@ -20,10 +20,10 @@ class Setting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
          GestureDetector(
            onTap: (){
              Get.to(()=>EditProfileScreen());
@@ -31,7 +31,7 @@ class Setting extends StatelessWidget {
            child: Container(
              height: 45,
              width: Get.width,
-             padding: EdgeInsets.symmetric(horizontal: 20),
+             padding: const EdgeInsets.symmetric(horizontal: 20),
              alignment: Alignment.centerLeft,
              decoration: BoxDecoration(
                color: Colors.white,
@@ -42,20 +42,20 @@ class Setting extends StatelessWidget {
                    color: Colors.grey.withOpacity(0.3),
                    spreadRadius: 2,
                    blurRadius: 5,
-                   offset: Offset(0, 3), // changes position of shadow
+                   offset: const Offset(0, 3), // changes position of shadow
                  ),
                ],
              ),
              child:  Row(
                children: [
                  Text(StringRes.editProfile, style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 16)),
-                 Spacer(),
+                 const Spacer(),
                  Icon(Icons.edit_outlined, color: Colors.black.withOpacity(0.7),)
                ],
              )
            ),
          ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           InkWell(
             onTap: (){
@@ -65,7 +65,7 @@ class Setting extends StatelessWidget {
                 ()=> Container(
                   height: 45,
                   width: Get.width,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   alignment: Alignment.centerLeft,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -76,14 +76,14 @@ class Setting extends StatelessWidget {
                         color: Colors.grey.withOpacity(0.3),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3), // changes position of shadow
+                        offset: const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                   ),
                   child:  Row(
                     children: [
                       Text(StringRes.selectLanguage, style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 16)),
-                      Spacer(),
+                      const Spacer(),
                       settingController.languageDrop.value ?
                       Icon(Icons.keyboard_arrow_up_outlined, color: Colors.black.withOpacity(0.7),)
                           : Icon(Icons.keyboard_arrow_down_rounded, color: Colors.black.withOpacity(0.7),)
@@ -92,12 +92,12 @@ class Setting extends StatelessWidget {
               ),
             ),
           ),
-        Obx(() => settingController.languageDrop.value ? SizedBox(height: 10): SizedBox(),),
+        Obx(() => settingController.languageDrop.value ? const SizedBox(height: 10): const SizedBox(),),
           Obx(
             ()=> settingController.languageDrop.value
                 ? Container(
               width: Get.width,
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -108,7 +108,7 @@ class Setting extends StatelessWidget {
                     color: Colors.grey.withOpacity(0.3),
                     spreadRadius: 2,
                     blurRadius: 5,
-                    offset: Offset(0, 3), // changes position of shadow
+                    offset: const Offset(0, 3), // changes position of shadow
                   ),
                 ],
               ),
@@ -122,10 +122,10 @@ class Setting extends StatelessWidget {
                     },
                       child: Container(
                         width: Get.width,
-                          child: Text(StringRes.english, style: settingController.index.value == 0 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) : TextStyle(color: ColorRes.grey),))),
-                  SizedBox(height: 7,),
+                          child: Text(StringRes.english, style: settingController.index.value == 0 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) : const TextStyle(color: ColorRes.grey),))),
+                  const SizedBox(height: 7,),
                   Divider(thickness: 1, color: Colors.grey.withOpacity(0.4),),
-                  SizedBox(height: 7,),
+                  const SizedBox(height: 7,),
                   InkWell(
                       onTap: (){
                         settingController.index.value = 1;
@@ -133,14 +133,25 @@ class Setting extends StatelessWidget {
                       },
                       child: Container(
                         width: Get.width,
-                          child: Text(StringRes.hindi, style:  settingController.index.value == 1 ? TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) :TextStyle(color: ColorRes.grey),)))
+                          child: Text(StringRes.hindi, style:  settingController.index.value == 1 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) :const TextStyle(color: ColorRes.grey),))),
+                  const SizedBox(height: 7,),
+                  Divider(thickness: 1, color: Colors.grey.withOpacity(0.4),),
+                  const SizedBox(height: 7,),
+                  InkWell(
+                      onTap: (){
+                        settingController.index.value = 2;
+                        settingController.languageDrop.value = false;
+                      },
+                      child: SizedBox(
+                          width: Get.width,
+                          child: Text(StringRes.gujarati, style:  settingController.index.value == 2 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) :const TextStyle(color: ColorRes.grey),)))
                 ],
               ),
             )
-                : SizedBox(),
+                : const SizedBox(),
           ),
 
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           GestureDetector(
             onTap: (){
@@ -149,22 +160,21 @@ class Setting extends StatelessWidget {
                   builder: (BuildContext context) {
                     return AlertDialog(
                       backgroundColor: Colors.white,
-                      title: Text("Are you sure you want log out ?", style: TextStyle(fontSize: 20, color: Colors.black)),
+                      title: const Text("Are you sure you want log out ?", style: TextStyle(fontSize: 20, color: Colors.black)),
                       actions: <Widget>[
                         TextButton(
-                          child: Text("No",style: TextStyle(fontSize: 18, color: Colors.black)),
+                          child: const Text("No",style: TextStyle(fontSize: 18, color: Colors.black)),
                           onPressed: () {
                             Get.back();
                           },
                         ),
                         TextButton(
-                          child: Text("Yes", style: TextStyle(fontSize: 18, color: Colors.black)),
+                          child: const Text("Yes", style: TextStyle(fontSize: 18, color: Colors.black)),
                           onPressed: () {
                              PrefService.setValue(PrefKeys.isLogin, false);
                              //Get.offAll(LoginScreen());
-
                             DashboardController dashboardController = Get.put(DashboardController());
-                            dashboardController.index.value = 1;
+                            dashboardController.index.value = 2;
                             Get.back();
                           },
                         )
@@ -175,25 +185,24 @@ class Setting extends StatelessWidget {
             child: Container(
                 height: 45,
                 width: Get.width,
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 alignment: Alignment.centerLeft,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
-
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.3),
                       spreadRadius: 2,
                       blurRadius: 5,
-                      offset: Offset(0, 3), // changes position of shadow
+                      offset: const Offset(0, 3), // changes position of shadow
                     ),
                   ],
                 ),
                 child:  Row(
                   children: [
                     Text(StringRes.logOut, style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 16)),
-                    Spacer(),
+                    const Spacer(),
                     Icon(Icons.logout_rounded, color: Colors.black.withOpacity(0.7),)
                   ],
                 )
