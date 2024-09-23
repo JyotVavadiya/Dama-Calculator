@@ -7,6 +7,7 @@ class CustomTextFormField extends StatelessWidget {
     Key? key,
     this.alignment,
     this.width,
+    this.height,
     this.controller,
     this.focusNode,
     this.autofocus = true,
@@ -40,6 +41,8 @@ class CustomTextFormField extends StatelessWidget {
   final Alignment? alignment;
 
   final double? width;
+
+  final double? height;
 
   final TextEditingController? controller;
 
@@ -92,10 +95,10 @@ class CustomTextFormField extends StatelessWidget {
   Widget get textFormFieldWidget => InkWell(
     onTap: onTap,
     child: Container(
-
+             height: height,
           width: width ?? double.maxFinite,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.2),
@@ -137,7 +140,7 @@ class CustomTextFormField extends StatelessWidget {
     errorMaxLines: 2,
 
         // border: borderDecoration ?? OutlineInputBorder(borderRadius: BorderRadius.circular(16,), borderSide: BorderSide(color: ColorRes.themColor, width: 1), ),
-    border: borderDecoration ?? OutlineInputBorder(borderRadius: BorderRadius.circular(16,), borderSide: BorderSide.none),
+    border: borderDecoration ?? OutlineInputBorder(borderRadius: BorderRadius.circular(12,), borderSide: BorderSide.none),
         enabledBorder: borderDecoration ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),

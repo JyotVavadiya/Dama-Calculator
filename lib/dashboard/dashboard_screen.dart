@@ -38,6 +38,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
+
       key: _scaffoldKey,
       appBar: AppBar(
         elevation: 0,
