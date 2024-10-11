@@ -57,8 +57,8 @@ class EditProfileScreen extends StatelessWidget {
                                },
                                  child: Icon(Icons.arrow_back_rounded, color: ColorRes.themColor)),
                              SizedBox(width: 20,),
-                             const Text(
-                               StringRes.editProfile,
+                              Text(
+                               StringRes.editProfile.tr,
                                style: TextStyle(
                                    fontSize: 25,
                                    color: ColorRes.themColor,
@@ -72,15 +72,15 @@ class EditProfileScreen extends StatelessWidget {
                           ///  ---------- username field
                           Padding(
                             padding: EdgeInsets.only(left: 10),
-                              child: Text(StringRes.userName, style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 16, fontWeight: FontWeight.w500),)),
+                              child: Text(StringRes.userName.tr, style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 16, fontWeight: FontWeight.w500),)),
                           SizedBox(height: 5),
                           CustomTextFormField(
                               controller: controller.userNameController,
-                              hintText: StringRes.userName,
+                              hintText: StringRes.userName.tr,
                               textInputType: TextInputType.emailAddress,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return "Please enter user name";
+                                  return "Please enter user name".tr;
                                 }
                                 return null;
                               }),
@@ -89,17 +89,17 @@ class EditProfileScreen extends StatelessWidget {
                           ///  ---------- phone field
                              Padding(
                                  padding: EdgeInsets.only(left: 10),
-                                 child: Text(StringRes.mobileNumber, style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 16, fontWeight: FontWeight.w500),)),
+                                 child: Text(StringRes.mobileNumber.tr, style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 16, fontWeight: FontWeight.w500),)),
                                                    SizedBox(height: 5),
                           CustomTextFormField(
                               controller: controller.mobileNumberController,
                               textInputType: TextInputType.phone,
-                              hintText: StringRes.mobileNumber,
+                              hintText: StringRes.mobileNumber.tr,
                               validator: (value) {
                                 if (!isNumeric(value) ||
                                     value!.isEmpty ||
                                     value.length != 10) {
-                                  return "Please enter valid number";
+                                  return "Please enter valid number".tr;
                                 }
                                 return null;
                               }),
@@ -109,11 +109,11 @@ class EditProfileScreen extends StatelessWidget {
 
                           Padding(
                               padding: EdgeInsets.only(left: 10),
-                              child: Text(StringRes.dateOfBirth, style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 16, fontWeight: FontWeight.w500),)),
+                              child: Text(StringRes.dateOfBirth.tr, style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 16, fontWeight: FontWeight.w500),)),
                           SizedBox(height: 5),
                              CustomTextFormField(
                                 controller: controller.dateOfBirthController,
-                                hintText: StringRes.dateOfBirth,
+                                hintText: StringRes.dateOfBirth.tr,
                                 enable: false,
                                 readOnly: true,
                                 onTap: () async{
@@ -138,18 +138,18 @@ class EditProfileScreen extends StatelessWidget {
                           ///  ---------- email text field
                           Padding(
                               padding: EdgeInsets.only(left: 10),
-                              child: Text(StringRes.email, style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 16, fontWeight: FontWeight.w500),)),
+                              child: Text(StringRes.email.tr, style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 16, fontWeight: FontWeight.w500),)),
                           SizedBox(height: 5),
                           CustomTextFormField(
                               controller: controller.emailController,
-                              hintText: StringRes.email,
+                              hintText: StringRes.email.tr,
                               textInputType: TextInputType.emailAddress,
                               fillColor: Colors.grey.withOpacity(0.3),
                               enable: false,
                               validator: (value) {
                                 if (value == null ||
                                     (!isValidEmail(value, isRequired: true))) {
-                                  return "Please enter valid email address.";
+                                  return "Please enter valid email address".tr;
                                 }
                                 return null;
                               }),
@@ -161,7 +161,7 @@ class EditProfileScreen extends StatelessWidget {
 
                           ///------ signup button
                           CustomElevatedButton(
-                              text: StringRes.update,
+                              text: StringRes.update.tr,
                               onPressed: ()  {
                                       if (_signupformKey.currentState!.validate()) {
                                       Get.back();

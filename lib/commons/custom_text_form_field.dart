@@ -30,6 +30,7 @@ class CustomTextFormField extends StatelessWidget {
     this.readOnly,
     this.onTap,
     this.enable,
+    this.onEditComplete,
   }) : super(key: key);
 
   final bool? readOnly;
@@ -82,6 +83,8 @@ class CustomTextFormField extends StatelessWidget {
 
   final FormFieldValidator<String>? validator;
 
+  final Function(String)? onEditComplete;
+
   @override
   Widget build(BuildContext context) {
     return alignment != null
@@ -110,6 +113,7 @@ class CustomTextFormField extends StatelessWidget {
           ),
           child: TextFormField(
 
+            onChanged: onEditComplete ?? (val){},
             controller: controller,
             enabled: enable ?? true,
             readOnly: readOnly ?? false,

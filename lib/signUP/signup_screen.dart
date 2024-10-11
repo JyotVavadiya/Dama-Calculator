@@ -47,8 +47,8 @@ class SignupScreen extends StatelessWidget {
                           const SizedBox(
                             height: 30,
                           ),
-                          const Text(
-                            StringRes.signUp,
+                           Text(
+                            StringRes.signUp.tr,
                             style: TextStyle(
                                 fontSize: 30,
                                 color: ColorRes.themColor,
@@ -57,8 +57,8 @@ class SignupScreen extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          const Text(
-                            StringRes.signUpMsg,
+                           Text(
+                            StringRes.signUpMsg.tr,
                             style: TextStyle(
                                 fontSize: 14,
                                 color: ColorRes.hint,
@@ -69,11 +69,11 @@ class SignupScreen extends StatelessWidget {
                           ///  ---------- username field
                           CustomTextFormField(
                               controller: controller.userNameController,
-                              hintText: StringRes.userName,
+                              hintText: StringRes.userName.tr,
                               textInputType: TextInputType.emailAddress,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return "Please enter user name";
+                                  return "Please enter user name".tr;
                                 }
                                 return null;
                               }),
@@ -83,12 +83,12 @@ class SignupScreen extends StatelessWidget {
                           CustomTextFormField(
                               controller: controller.mobileNumberController,
                               textInputType: TextInputType.phone,
-                              hintText: StringRes.mobileNumber,
+                              hintText: StringRes.mobileNumber.tr,
                               validator: (value) {
                                 if (!isNumeric(value) ||
                                     value!.isEmpty ||
                                     value.length != 10) {
-                                  return "Please enter valid number";
+                                  return "Please enter valid number".tr;
                                 }
                                 return null;
                               }),
@@ -99,7 +99,7 @@ class SignupScreen extends StatelessWidget {
 
                              CustomTextFormField(
                                 controller: controller.dateOfBirthController,
-                                hintText: StringRes.dateOfBirth,
+                                hintText: StringRes.dateOfBirth.tr,
                                 enable: false,
                                 readOnly: true,
                                 onTap: () async{
@@ -124,13 +124,13 @@ class SignupScreen extends StatelessWidget {
                           ///  ---------- email text field
                           CustomTextFormField(
                               controller: controller.emailController,
-                              hintText: StringRes.email,
+                              hintText: StringRes.email.tr,
                               textInputType: TextInputType.emailAddress,
 
                               validator: (value) {
                                 if (value == null ||
                                     (!isValidEmail(value, isRequired: true))) {
-                                  return "Please enter valid email address.";
+                                  return "Please enter valid email address.".tr;
                                 }
                                 return null;
                               }),
@@ -139,7 +139,7 @@ class SignupScreen extends StatelessWidget {
                           ///  ---------- password text field
                           Obx(() => CustomTextFormField(
                               controller: controller.passwordController,
-                              hintText: StringRes.password,
+                              hintText: StringRes.password.tr,
                               textInputAction: TextInputAction.done,
                               textInputType: TextInputType.visiblePassword,
                               suffix: GestureDetector(
@@ -166,7 +166,7 @@ class SignupScreen extends StatelessWidget {
 
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return "Please enter valid password.";
+                                  return "Please enter valid password.".tr;
                                 }
                                 return null;
                               },
@@ -177,7 +177,7 @@ class SignupScreen extends StatelessWidget {
 
                           ///------ signup button
                           CustomElevatedButton(
-                              text: StringRes.signUp,
+                              text: StringRes.signUp.tr,
                               onPressed: ()  {
                                       if (_signupformKey.currentState!.validate()) {
                                         PrefService.setValue(
@@ -191,9 +191,9 @@ class SignupScreen extends StatelessWidget {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Padding(
+                                 Padding(
                                     padding: EdgeInsets.only(bottom: 1),
-                                    child: Text(StringRes.alreadyAccount,
+                                    child: Text(StringRes.alreadyAccount.tr,
                                         style:
                                             TextStyle(color: ColorRes.grey))),
                                 GestureDetector(
@@ -201,9 +201,9 @@ class SignupScreen extends StatelessWidget {
                                       //Get.to(LoginScreen());
                                       Get.back();
                                     },
-                                    child: const Padding(
+                                    child:  Padding(
                                         padding: EdgeInsets.only(left: 4),
-                                        child: Text(StringRes.login,
+                                        child: Text(StringRes.login.tr,
                                             style: TextStyle(
                                                 color: ColorRes.themColor, fontWeight: FontWeight.w500))))
                               ])

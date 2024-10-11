@@ -26,7 +26,7 @@ class ContactUs extends StatelessWidget {
             children: [
               Image.asset(AssetRes.phone, height: 22, color: Colors.black.withOpacity(0.7)),
               SizedBox(width: 20),
-              Text("+91 9726607009", style: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 16),)
+              Text("+91 9726607009".tr, style: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 16),)
             ],
           ),
           SizedBox(height: 20),
@@ -38,7 +38,7 @@ class ContactUs extends StatelessWidget {
              SizedBox(
 
                width: Get.width * 0.78,
-               child:  Text("49-54 Block 303 Hari Om Industrial Arena-B Umbhel Parab Road Surat Gujarat-394310", style: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 16),),
+               child:  Text("49-54 Block 303 Hari Om Industrial Arena-B Umbhel Parab Road Surat Gujarat-394310".tr, style: TextStyle(color: Colors.black.withOpacity(0.7), fontSize: 16),),
              ),
             ],
           ),

@@ -6,6 +6,7 @@ import 'package:damacalculator/service/pref_services.dart';
 import 'package:damacalculator/utils/color_res.dart';
 import 'package:damacalculator/utils/pref_key.dart';
 import 'package:damacalculator/utils/string_res.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -48,7 +49,7 @@ class Setting extends StatelessWidget {
              ),
              child:  Row(
                children: [
-                 Text(StringRes.editProfile, style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 16)),
+                 Text(StringRes.editProfile.tr, style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 16)),
                  const Spacer(),
                  Icon(Icons.edit_outlined, color: Colors.black.withOpacity(0.7),)
                ],
@@ -82,7 +83,7 @@ class Setting extends StatelessWidget {
                   ),
                   child:  Row(
                     children: [
-                      Text(StringRes.selectLanguage, style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 16)),
+                      Text(StringRes.selectLanguage.tr, style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 16)),
                       const Spacer(),
                       settingController.languageDrop.value ?
                       Icon(Icons.keyboard_arrow_up_outlined, color: Colors.black.withOpacity(0.7),)
@@ -119,10 +120,13 @@ class Setting extends StatelessWidget {
                     onTap: (){
                       settingController.index.value = 0;
                       settingController.languageDrop.value = false;
+
+                      var locale = Locale('en', 'US'); // Set to English
+                      Get.updateLocale(locale);
                     },
                       child: Container(
                         width: Get.width,
-                          child: Text(StringRes.english, style: settingController.index.value == 0 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) : const TextStyle(color: ColorRes.grey),))),
+                          child: Text(StringRes.english.tr, style: settingController.index.value == 0 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) : const TextStyle(color: ColorRes.grey),))),
                   const SizedBox(height: 7,),
                   Divider(thickness: 1, color: Colors.grey.withOpacity(0.4),),
                   const SizedBox(height: 7,),
@@ -133,7 +137,7 @@ class Setting extends StatelessWidget {
                       },
                       child: Container(
                         width: Get.width,
-                          child: Text(StringRes.hindi, style:  settingController.index.value == 1 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) :const TextStyle(color: ColorRes.grey),))),
+                          child: Text(StringRes.hindi.tr, style:  settingController.index.value == 1 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) :const TextStyle(color: ColorRes.grey),))),
                   const SizedBox(height: 7,),
                   Divider(thickness: 1, color: Colors.grey.withOpacity(0.4),),
                   const SizedBox(height: 7,),
@@ -141,10 +145,14 @@ class Setting extends StatelessWidget {
                       onTap: (){
                         settingController.index.value = 2;
                         settingController.languageDrop.value = false;
+
+                        var locale = Locale('gu', 'IN'); // Set to Gujarati
+                        Get.updateLocale(locale); //
+
                       },
                       child: SizedBox(
                           width: Get.width,
-                          child: Text(StringRes.gujarati, style:  settingController.index.value == 2 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) :const TextStyle(color: ColorRes.grey),)))
+                          child: Text(StringRes.gujarati.tr, style:  settingController.index.value == 2 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) :const TextStyle(color: ColorRes.grey),)))
                 ],
               ),
             )
@@ -160,16 +168,16 @@ class Setting extends StatelessWidget {
                   builder: (BuildContext context) {
                     return AlertDialog(
                       backgroundColor: Colors.white,
-                      title: const Text("Are you sure you want log out ?", style: TextStyle(fontSize: 20, color: Colors.black)),
+                      title:  Text("Are you sure you want log out ?".tr, style: TextStyle(fontSize: 20, color: Colors.black)),
                       actions: <Widget>[
                         TextButton(
-                          child: const Text("No",style: TextStyle(fontSize: 18, color: Colors.black)),
+                          child:  Text("No".tr,style: TextStyle(fontSize: 18, color: Colors.black)),
                           onPressed: () {
                             Get.back();
                           },
                         ),
                         TextButton(
-                          child: const Text("Yes", style: TextStyle(fontSize: 18, color: Colors.black)),
+                          child:  Text("Yes".tr, style: TextStyle(fontSize: 18, color: Colors.black)),
                           onPressed: () {
                              PrefService.setValue(PrefKeys.isLogin, false);
                              //Get.offAll(LoginScreen());
@@ -201,7 +209,7 @@ class Setting extends StatelessWidget {
                 ),
                 child:  Row(
                   children: [
-                    Text(StringRes.logOut, style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 16)),
+                    Text(StringRes.logOut.tr, style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 16)),
                     const Spacer(),
                     Icon(Icons.logout_rounded, color: Colors.black.withOpacity(0.7),)
                   ],

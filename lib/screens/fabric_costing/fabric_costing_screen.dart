@@ -1,5 +1,4 @@
 import 'package:damacalculator/commons/custom_text_form_field.dart';
-import 'package:damacalculator/commons/validation_functions.dart';
 import 'package:damacalculator/screens/fabric_costing/fabric_costing_controller.dart';
 import 'package:damacalculator/utils/color_res.dart';
 import 'package:damacalculator/utils/string_res.dart';
@@ -24,8 +23,11 @@ class FabricCostingScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-
+              SizedBox(height: 20),
+              Obx(()=> Text("${StringRes.materialCostPerSadi.tr} => ${(fabricCostingController.totalCost * 7.3).toStringAsFixed(2)}", style: TextStyle(fontWeight: FontWeight.w500, color: ColorRes.themColor, fontSize: 16), )),
+                Divider(),
               feeder(),
+              Divider(),
               beam(),
             ],
           ),
@@ -36,7 +38,7 @@ class FabricCostingScreen extends StatelessWidget {
 
 feeder(){
     return SizedBox(
-      height: Get.height /2.3,
+      height: Get.height /2.4,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -45,7 +47,7 @@ feeder(){
           Row(
 
             children: [
-              Text("${StringRes.selectNumbersOfFeeder} :-", style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500),),
+              Text("${StringRes.selectNumbersOfFeeder.tr} :-", style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500),),
               SizedBox(width: 10),
               Obx(
                     () => DropdownButton<int>(
@@ -69,6 +71,7 @@ feeder(){
                   onChanged: (value) {
                     fabricCostingController.dropValueFeeder.value = value!;
                     fabricCostingController.updateTextFields(value);
+
                   },
                 ),
               ),
@@ -86,7 +89,7 @@ feeder(){
             //             "Select a number to generate input fields")) // Placeholder
                 :
             SizedBox(
-              height: Get.height * 0.33,
+              height: Get.height * 0.3,
               child: Scrollbar (
                 thumbVisibility: true,
                 radius: Radius.circular(5),
@@ -110,21 +113,31 @@ feeder(){
                               ),
                               child: Column(
                                 children: [
-                                  Text("FEEDER ${index+1}"),
-                                  SizedBox(height: 5,),
+                                 Row(
+                                   mainAxisAlignment: MainAxisAlignment.center,
+                                   children: [
+                                     Text("FEEDER".tr),
+                                     Text(" ${index+1}"),
+                                   ],
+                                 ),
+                                  SizedBox(height: 5),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
+
                                       CustomTextFormField(
 
                                           width: Get.width / 2.5,
                                           controller: fabricCostingController.denierTextControllers[index],
-                                          hintText: StringRes.enterDenier,
+                                          hintText: StringRes.enterDenier.tr,
                                           textInputType: TextInputType.number,
                                           contentPadding: EdgeInsets.only(top: 8 , bottom: 8, left: 10),
+                                           onEditComplete: (val){
+                                             fabricCostingController.onEditComplete(index);
+                                           },
                                           validator: (value) {
                                             if (value == null || value.isEmpty) {
-                                              return "Please enter denier";
+                                              return "Please enter denier".tr;
                                             }
                                             return null;
                                           }),
@@ -133,44 +146,70 @@ feeder(){
                                           controller: fabricCostingController.pickTextControllers[index],
                                           hintText: StringRes.enterPick,
                                           textInputType: TextInputType.number,
+                                          onEditComplete:  (val){
+                                            fabricCostingController.onEditComplete(index);
+                                          },
                                           contentPadding: EdgeInsets.only(top: 8 , bottom: 8, left: 10),
                                           validator: (value) {
                                             if (value == null || value.isEmpty) {
-                                              return "Please enter pick";
+                                              return "Please enter pick".tr;
                                             }
                                             return null;
                                           }),
                                     ],
                                   ),
-                                  SizedBox(height: 5,),
+                                  SizedBox(height: 5),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       CustomTextFormField(
                                           width: Get.width / 2.5,
                                           controller: fabricCostingController.rateTextControllers[index],
-                                          hintText: StringRes.enterYarnRate,
+                                          hintText: StringRes.enterYarnRate.tr,
                                           textInputType: TextInputType.number,
+                                          onEditComplete:  (val){
+                                            fabricCostingController.onEditComplete(index);
+                                          },
                                           contentPadding: EdgeInsets.only(top: 8 , bottom: 8, left: 10),
                                           validator: (value) {
                                             if (value == null || value.isEmpty) {
-                                              return "Please enter yarn rate";
+                                              return "Please enter yarn rate".tr;
                                             }
                                             return null;
                                           }),
                                       CustomTextFormField(
                                           width: Get.width / 2.5,
                                           controller: fabricCostingController.widthTextControllers[index],
-                                          hintText: StringRes.enterFabricWidth,
+                                          hintText: StringRes.enterFabricWidth.tr,
                                           textInputType: TextInputType.number,
+                                          onEditComplete:  (val){
+                                            fabricCostingController.onEditComplete(index);
+                                          },
                                           contentPadding: EdgeInsets.only(top: 8 , bottom: 8, left: 10),
                                           validator: (value) {
                                             if (value == null || value.isEmpty) {
-                                              return "Please enter fabric width";
+                                              return "Please enter fabric width".tr;
                                             }
                                             return null;
                                           }),
                                     ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Obx(
+                    ()=> Row(
+                                      children: [
+                                        Text("${StringRes.yarn.tr}= ${fabricCostingController.fYarn[index].toStringAsFixed(2)}"),
+                                        Spacer(),
+                                        Container(height: 12, width: 1, color: ColorRes.themColor,),
+                                        Spacer(),
+
+                                        Text("${StringRes.costOf100m.tr}=  ${fabricCostingController.f100m[index].toStringAsFixed(2)}"),
+                                        Spacer(),
+                                        Container(height: 12, width: 1, color: ColorRes.themColor,),
+                                        Spacer(),
+                                        Text("${StringRes.costOf1m.tr}=  ${fabricCostingController.f1m[index].toStringAsFixed(2)}"),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
@@ -193,7 +232,7 @@ feeder(){
 
 beam(){
     return SizedBox(
-      height: Get.height /2.3,
+      height: Get.height /2.5,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -202,7 +241,7 @@ beam(){
           Row(
 
             children: [
-              Text("${StringRes.selectNumbersOfBeam} :-", style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500),),
+              Text("${StringRes.selectNumbersOfBeam.tr} :-", style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500),),
               SizedBox(width: 10),
               Obx(
                     () => DropdownButton<int>(
@@ -243,7 +282,7 @@ beam(){
             //             "Select a number to generate input fields")) // Placeholder
                 :
             SizedBox(
-              height: Get.height * 0.35,
+              height: Get.height * 0.3,
               child: Scrollbar(
                 thumbVisibility: true,
                 radius: Radius.circular(5),
@@ -266,7 +305,14 @@ beam(){
                               ),
                               child: Column(
                                 children: [
-                                  Text("BEAM ${index+1}"),
+
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("BEAM".tr),
+                                      Text(" ${index+1}"),
+                                    ],
+                                  ),
                                   SizedBox(height: 5,),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -274,24 +320,30 @@ beam(){
                                       CustomTextFormField(
                                           width: Get.width / 2.5,
                                           controller: fabricCostingController.denierTextControllersB[index],
-                                          hintText: StringRes.enterDenier,
+                                          hintText: StringRes.enterDenier.tr,
                                           textInputType: TextInputType.number,
                                           contentPadding: EdgeInsets.only(top: 8 , bottom: 8, left: 10),
+                                          onEditComplete: (val){
+                                      fabricCostingController.onChange(index);
+                                      },
                                           validator: (value) {
                                             if (value == null || value.isEmpty) {
-                                              return "Please enter denier";
+                                              return "Please enter denier".tr;
                                             }
                                             return null;
                                           }),
                                       CustomTextFormField(
                                           width: Get.width / 2.5,
                                           controller: fabricCostingController.endsTextControllersB[index],
-                                          hintText: StringRes.enterEnd,
+                                          hintText: StringRes.enterEnd.tr,
                                           textInputType: TextInputType.number,
                                           contentPadding: EdgeInsets.only(top: 8 , bottom: 8, left: 10),
+                                          onEditComplete: (val){
+                                            fabricCostingController.onChange(index);
+                                          },
                                           validator: (value) {
                                             if (value == null || value.isEmpty) {
-                                              return "Please enter ends";
+                                              return "Please enter ends".tr;
                                             }
                                             return null;
                                           }),
@@ -304,28 +356,51 @@ beam(){
                                       CustomTextFormField(
                                           width: Get.width / 2.5,
                                           controller: fabricCostingController.rateTextControllersB[index],
-                                          hintText: StringRes.enterYarnRate,
+                                          hintText: StringRes.enterYarnRate.tr,
                                           textInputType: TextInputType.number,
                                           contentPadding: EdgeInsets.only(top: 8 , bottom: 8, left: 10),
+                                          onEditComplete: (val){
+                                            fabricCostingController.onChange(index);
+                                          },
                                           validator: (value) {
                                             if (value == null || value.isEmpty) {
-                                              return "Please enter yarn rate";
+                                              return "Please enter yarn rate".tr;
                                             }
                                             return null;
                                           }),
                                       CustomTextFormField(
                                           width: Get.width / 2.5,
                                           controller: fabricCostingController.widthTextControllersB[index],
-                                          hintText: StringRes.enterFabricWidth,
+                                          hintText: StringRes.enterFabricWidth.tr,
                                           textInputType: TextInputType.number,
                                           contentPadding: EdgeInsets.only(top: 8 , bottom: 8, left: 10),
+                                          onEditComplete: (val){
+                                            fabricCostingController.onChange(index);
+                                          },
                                           validator: (value) {
                                             if (value == null || value.isEmpty) {
-                                              return "Please enter fabric width";
+                                              return "Please enter fabric width".tr;
                                             }
                                             return null;
                                           }),
                                     ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Obx(
+                                        ()=> Row(
+                                      children: [
+                                        Text("${StringRes.yarn.tr}= ${fabricCostingController.bYarn[index].toStringAsFixed(2)}"),
+                                        Spacer(),
+                                        Container(height: 12, width: 1, color: ColorRes.themColor,),
+                                        Spacer(),
+
+                                        Text("${StringRes.costOf100m.tr}=  ${fabricCostingController.b100m[index].toStringAsFixed(2)}"),
+                                        Spacer(),
+                                        Container(height: 12, width: 1, color: ColorRes.themColor,),
+                                        Spacer(),
+                                        Text("${StringRes.costOf1m.tr}=  ${fabricCostingController.b1m[index].toStringAsFixed(2)}"),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),

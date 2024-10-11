@@ -44,8 +44,8 @@ class LoginScreen extends StatelessWidget {
                           const SizedBox(
                             height: 30,
                           ),
-                          const Text(
-                            StringRes.login,
+                           Text(
+                            StringRes.login.tr,
                             style: TextStyle(
                                 fontSize: 30,
                                 color: ColorRes.themColor,
@@ -54,8 +54,8 @@ class LoginScreen extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          const Text(
-                            StringRes.loginMsg,
+                           Text(
+                            StringRes.loginMsg.tr,
                             style: TextStyle(
                                 fontSize: 14,
                                 color: ColorRes.hint,
@@ -67,13 +67,13 @@ class LoginScreen extends StatelessWidget {
                           ///  ---------- email text field
                           CustomTextFormField(
                               controller: loginController.emailController,
-                              hintText: StringRes.email,
+                              hintText: StringRes.email.tr,
                               textInputType: TextInputType.emailAddress,
 
                               validator: (value) {
                                 if (value == null ||
                                     (!isValidEmail(value, isRequired: true))) {
-                                  return "Please enter valid email address.";
+                                  return "Please enter valid email address.".tr;
                                 }
                                 return null;
                               }),
@@ -84,7 +84,7 @@ class LoginScreen extends StatelessWidget {
                           ///  ---------- password text field
                           Obx(() => CustomTextFormField(
                               controller: loginController.passwordController,
-                              hintText: StringRes.password,
+                              hintText: StringRes.password.tr,
                               textInputAction: TextInputAction.done,
                               textInputType: TextInputType.visiblePassword,
                               suffix: GestureDetector(
@@ -109,7 +109,7 @@ class LoginScreen extends StatelessWidget {
 
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return "Please enter valid password.";
+                                  return "Please enter valid password.".tr;
                                 }
                                 return null;
                               },
@@ -122,7 +122,7 @@ class LoginScreen extends StatelessWidget {
 
                           ///------ login button
                           CustomElevatedButton(
-                              text: StringRes.login,
+                              text: StringRes.login.tr,
                               onPressed: loginController.loader.value ? (){} : () async{
                                 if (_formKey.currentState!.validate()) {
                                  Get.to(const DashboardScreen());
@@ -136,16 +136,16 @@ class LoginScreen extends StatelessWidget {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Padding(
+                                 Padding(
                                     padding: EdgeInsets.only(bottom: 1),
-                                    child: Text(StringRes.doNotAccount, style: TextStyle( color: ColorRes.grey))),
+                                    child: Text(StringRes.doNotAccount.tr, style: TextStyle( color: ColorRes.grey))),
                                 GestureDetector(
                                     onTap: () {
                                           Get.to(()=>SignupScreen());
                                     },
-                                    child: const Padding(
+                                    child:  Padding(
                                         padding: EdgeInsets.only(left: 4),
-                                        child: Text(StringRes.signUp, style: TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500))))
+                                        child: Text(StringRes.signUp.tr, style: TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500))))
                               ])
                         ],
                       ),

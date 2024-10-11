@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 
 class FabricCostingController extends GetxController {
+
+  RxDouble totalCost = 0.0.obs;
+  RxDouble totalFeeder = 0.0.obs;
+  RxDouble totalBeam = 0.0.obs;
+
 
   /// ------------ tab -----------
   var selectedIndex = 0.obs; // Observable tab index
@@ -11,6 +17,11 @@ class FabricCostingController extends GetxController {
   }
 
   /// ------------ feeder ---------
+
+
+  RxList fYarn = [].obs;
+  RxList f100m = [].obs;
+  RxList f1m = [].obs;
 
   var dropValueFeeder = 0.obs;
 
@@ -46,7 +57,49 @@ class FabricCostingController extends GetxController {
       count,
           (index) => TextEditingController(),
     );
+
+
+    fYarn.value = List.generate(
+      count,
+          (index) => 0.0,
+    );
+    f100m.value = List.generate(
+      count,
+          (index) => 0.0,
+    );
+    f1m.value = List.generate(
+      count,
+          (index) => 0.0,
+    );
+
+
   }
+
+  onEditComplete(int index ){
+
+
+
+      if(denierTextControllers[index].text.isNotEmpty &&
+          pickTextControllers[index].text.isNotEmpty &&
+          rateTextControllers[index].text.isNotEmpty &&
+          widthTextControllers[index].text.isNotEmpty
+      ){
+        fYarn[index] = (double.parse(denierTextControllers[index].text) * double.parse(pickTextControllers[index].text) * double.parse(widthTextControllers[index].text))/90000;
+        f100m[index] = fYarn[index] *  double.parse(rateTextControllers[index].text);
+        f1m[index] = f100m[index]/100;
+
+
+        totalFeeder.value = f1m.fold(0.0, (previousValue, element) => previousValue + element) ;
+        totalCost.value = totalBeam.value + totalFeeder.value;
+
+
+
+      } else{
+
+      }
+
+  }
+
 
   /// ------------ beam ---------
 
@@ -58,6 +111,10 @@ class FabricCostingController extends GetxController {
   var widthTextControllersB = <TextEditingController>[].obs;
 
   final formKeyB = <GlobalKey<FormState>>[].obs;
+
+  RxList bYarn = [].obs;
+  RxList b100m = [].obs;
+  RxList b1m = [].obs;
 
   // Function to update the number of TextFields based on selected value
   void updateTextFieldsB(int count) {
@@ -84,6 +141,45 @@ class FabricCostingController extends GetxController {
       count,
           (index) => TextEditingController(),
     );
+
+    bYarn.value = List.generate(
+      count,
+          (index) => 0.0,
+    );
+    b100m.value = List.generate(
+      count,
+          (index) => 0.0,
+    );
+    b1m.value = List.generate(
+      count,
+          (index) => 0.0,
+    );
+
+  }
+
+
+  onChange(int index ){
+
+
+
+    if(denierTextControllersB[index].text.isNotEmpty &&
+        endsTextControllersB[index].text.isNotEmpty &&
+        rateTextControllersB[index].text.isNotEmpty &&
+        widthTextControllersB[index].text.isNotEmpty
+    ){
+      bYarn[index] = (double.parse(denierTextControllersB[index].text) * double.parse(endsTextControllersB[index].text) * double.parse(widthTextControllersB[index].text))/90000;
+      b100m[index] = bYarn[index] *  double.parse(rateTextControllersB[index].text)/3;
+      b1m[index] = b100m[index]/100;
+
+      totalBeam.value = b1m.fold(0.0, (previousValue, element) => previousValue + element) ;
+
+      totalCost.value = totalBeam.value + totalFeeder.value ;
+
+
+    } else{
+
+    }
+
   }
 
 

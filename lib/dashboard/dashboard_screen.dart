@@ -43,12 +43,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: ColorRes.themColor,
-        title: controller.index.value == 0 ? const Text(StringRes.productionCalculation)
-             : controller.index.value == 1 ? const Text(StringRes.fabricCosting)
-            : controller.index.value == 2 ? const Text(StringRes.labourWork)
-            : controller.index.value == 3 ? const Text(StringRes.aboutUs)
-            : controller.index.value == 4 ? const Text(StringRes.contactUs)
-            : controller.index.value == 5 ? const Text(StringRes.setting) :  const Text(StringRes.productionCalculation) ,
+        title: controller.index.value == 0 ?  Text(StringRes.productionCalculation.tr)
+             : controller.index.value == 1 ?  Text(StringRes.fabricCosting.tr)
+            : controller.index.value == 2 ?  Text(StringRes.labourWork.tr)
+            : controller.index.value == 3 ?  Text(StringRes.aboutUs.tr)
+            : controller.index.value == 4 ?  Text(StringRes.contactUs.tr)
+            : controller.index.value == 5 ?  Text(StringRes.setting.tr) :   Text(StringRes.productionCalculation.tr) ,
         titleTextStyle: const TextStyle(color: ColorRes.white, fontSize: 18),
         centerTitle: true,
         leading: GestureDetector(
@@ -80,7 +80,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 )
             ),
             ListTile(
-              title:  Text(StringRes.productionCalculation,
+              title:  Text(StringRes.productionCalculation.tr,
                 style: controller.index.value == 0
                     ? const TextStyle(
                     color: ColorRes.themColor,
@@ -96,7 +96,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
             ),
             ListTile(
-              title:  Text(StringRes.fabricCosting,
+              title:  Text(StringRes.fabricCosting.tr,
                 style: controller.index.value == 1
                     ? const TextStyle(
                     color: ColorRes.themColor,
@@ -112,7 +112,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
             ),
             ListTile(
-              title:  Text(StringRes.labourWork,
+              title:  Text(StringRes.labourWork.tr,
                 style: controller.index.value == 2 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500,fontSize: 18)
                     : const TextStyle(color:   ColorRes.grey,fontSize: 18),
               ),
@@ -122,7 +122,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
             ),
             ListTile(
-              title:  Text(StringRes.aboutUs,
+              title:  Text(StringRes.aboutUs.tr,
                 style: controller.index.value == 3 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500, fontSize: 18)
                     : const TextStyle(color:   ColorRes.grey,fontSize: 18),
               ),
@@ -132,7 +132,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
             ),
             ListTile(
-              title:  Text(StringRes.contactUs,
+              title:  Text(StringRes.contactUs.tr,
                 style: controller.index.value == 4 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500, fontSize: 18)
                     : const TextStyle(color:   ColorRes.grey, fontSize: 18),
               ),
@@ -142,7 +142,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
             ),
             ListTile(
-              title:  Text(StringRes.setting,
+              title:  Text(StringRes.setting.tr,
                 style: controller.index.value == 5 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500, fontSize: 18)
                     : const TextStyle(color:   ColorRes.grey,fontSize: 18),
               ),
@@ -175,16 +175,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
               builder: (BuildContext context) {
                 return AlertDialog(
                   backgroundColor: Colors.white,
-                  title: const Text("Are you sure you want exit app ?", style: TextStyle(fontSize: 20, color: Colors.black)),
+                  title:  Text("Are you sure you want exit app ?".tr, style: TextStyle(fontSize: 20, color: Colors.black)),
                   actions: <Widget>[
                     TextButton(
-                      child: const Text("No",style: TextStyle(fontSize: 18, color: Colors.black)),
+                      child:  Text("No".tr,style: TextStyle(fontSize: 18, color: Colors.black)),
                       onPressed: () {
                         Get.back();
                       },
                     ),
                     TextButton(
-                      child: const Text("Yes", style: TextStyle(fontSize: 18, color: Colors.black)),
+                      child:  Text("Yes".tr, style: TextStyle(fontSize: 18, color: Colors.black)),
                       onPressed: () {
                         exit(0);
                       },
