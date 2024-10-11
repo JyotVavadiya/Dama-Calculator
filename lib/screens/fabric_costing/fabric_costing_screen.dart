@@ -114,7 +114,7 @@ feeder(){
                               child: Column(
                                 children: [
                                  Row(
-                                   mainAxisAlignment: MainAxisAlignment.center,
+                                   //mainAxisAlignment: MainAxisAlignment.center,
                                    children: [
                                      Text("FEEDER".tr),
                                      Text(" ${index+1}"),
@@ -144,7 +144,7 @@ feeder(){
                                       CustomTextFormField(
                                           width: Get.width / 2.5,
                                           controller: fabricCostingController.pickTextControllers[index],
-                                          hintText: StringRes.enterPick,
+                                          hintText: StringRes.enterPick.tr,
                                           textInputType: TextInputType.number,
                                           onEditComplete:  (val){
                                             fabricCostingController.onEditComplete(index);

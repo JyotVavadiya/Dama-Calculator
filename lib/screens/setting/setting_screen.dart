@@ -134,6 +134,8 @@ class Setting extends StatelessWidget {
                       onTap: (){
                         settingController.index.value = 1;
                         settingController.languageDrop.value = false;
+                        var locale = Locale('hi', 'IN'); // Set to Gujarati
+                        Get.updateLocale(locale);
                       },
                       child: Container(
                         width: Get.width,
