@@ -47,7 +47,7 @@ class SignupScreen extends StatelessWidget {
                           const SizedBox(
                             height: 30,
                           ),
-                           Text(
+                          Text(
                             StringRes.signUp.tr,
                             style: TextStyle(
                                 fontSize: 30,
@@ -57,7 +57,7 @@ class SignupScreen extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                           Text(
+                          Text(
                             StringRes.signUpMsg.tr,
                             style: TextStyle(
                                 fontSize: 14,
@@ -96,28 +96,28 @@ class SignupScreen extends StatelessWidget {
 
                           ///  ---------- date of birth field
 
-
-                             CustomTextFormField(
-                                controller: controller.dateOfBirthController,
-                                hintText: StringRes.dateOfBirth.tr,
-                                enable: false,
-                                readOnly: true,
-                                onTap: () async{
-                                  DateTime? pickedDate = await showDatePicker(
-                                    context: context,
-                                    lastDate: DateTime.now(),
-                                    firstDate: DateTime(1980),
-                                    initialDate: DateTime.now(),
-                                  );
-                                  if (pickedDate == null) return;
-                                  controller.dateOfBirthController.text = DateFormat('yyyy-MM-dd').format(pickedDate);
-                                },
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Please select date of birth".tr;
-                                  }
-                                  return null;
-                                }),
+                          CustomTextFormField(
+                              controller: controller.dateOfBirthController,
+                              hintText: StringRes.dateOfBirth.tr,
+                              enable: false,
+                              readOnly: true,
+                              onTap: () async {
+                                DateTime? pickedDate = await showDatePicker(
+                                  context: context,
+                                  lastDate: DateTime.now(),
+                                  firstDate: DateTime(1980),
+                                  initialDate: DateTime.now(),
+                                );
+                                if (pickedDate == null) return;
+                                controller.dateOfBirthController.text =
+                                    DateFormat('yyyy-MM-dd').format(pickedDate);
+                              },
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return "Please select date of birth".tr;
+                                }
+                                return null;
+                              }),
 
                           const SizedBox(height: 20),
 
@@ -126,7 +126,6 @@ class SignupScreen extends StatelessWidget {
                               controller: controller.emailController,
                               hintText: StringRes.email.tr,
                               textInputType: TextInputType.emailAddress,
-
                               validator: (value) {
                                 if (value == null ||
                                     (!isValidEmail(value, isRequired: true))) {
@@ -151,7 +150,6 @@ class SignupScreen extends StatelessWidget {
                                   margin:
                                       const EdgeInsets.fromLTRB(30, 18, 18, 18),
                                   child: Container(
-
                                     child: SvgPicture.asset(
                                       !controller.isShowPassword.value
                                           ? AssetRes.imgIcEye
@@ -163,7 +161,6 @@ class SignupScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return "Please enter valid password.".tr;
@@ -178,20 +175,23 @@ class SignupScreen extends StatelessWidget {
                           ///------ signup button
                           CustomElevatedButton(
                               text: StringRes.signUp.tr,
-                              onPressed: ()  {
-                                      if (_signupformKey.currentState!.validate()) {
-                                        PrefService.setValue(
-                                            PrefKeys.isLogin, true);
-                                        Get.to(()=>const DashboardScreen());
-
-                                      }
-                                    }),
+                              onPressed: () async {
+                                FocusScope.of(context).unfocus();
+                                if (_signupformKey.currentState!.validate()) {
+                                  await controller.signUp(
+                                      controller.emailController.text,
+                                      controller.passwordController.text,
+                                      controller.userNameController.text,
+                                      controller.mobileNumberController.text,
+                                      controller.dateOfBirthController.text);
+                                }
+                              }),
 
                           const SizedBox(height: 20),
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                 Padding(
+                                Padding(
                                     padding: EdgeInsets.only(bottom: 1),
                                     child: Text(StringRes.alreadyAccount.tr,
                                         style:
@@ -201,11 +201,12 @@ class SignupScreen extends StatelessWidget {
                                       //Get.to(LoginScreen());
                                       Get.back();
                                     },
-                                    child:  Padding(
+                                    child: Padding(
                                         padding: EdgeInsets.only(left: 4),
                                         child: Text(StringRes.login.tr,
                                             style: TextStyle(
-                                                color: ColorRes.themColor, fontWeight: FontWeight.w500))))
+                                                color: ColorRes.themColor,
+                                                fontWeight: FontWeight.w500))))
                               ])
                         ],
                       ),

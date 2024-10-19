@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "389038085530",
+    "project_id": "damacalculator",
+    "storage_bucket": "damacalculator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389038085530:android:d3aa30da3722dd39f31623",
+        "android_client_info": {
+          "package_name": "com.damacalculator.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLw0m2dxqZlUbz9z-BLjZLUQB3FFefHe4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

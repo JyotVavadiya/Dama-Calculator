@@ -22,8 +22,8 @@ class StringRes {
   static const logOut = "Log out";
   static const selectLanguage = "Select language";
   static const english = "English";
-  static const hindi = "Hindi";
-  static const gujarati = "Gujarati";
+  static const hindi = "हिंदी";
+  static const gujarati = "ગુજરાતી";
   static const motorRPM = "Motor RPM";
   static const enterMotorRPM = "Enter Motor RPM";
   static const pulleyDiameter = "Pulley Diameter(mm)";

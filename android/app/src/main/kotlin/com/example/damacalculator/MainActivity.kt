@@ -1,4 +1,4 @@
-package com.example.damacalculator
+package com.damacalculator.app
 
 import io.flutter.embedding.android.FlutterActivity
 

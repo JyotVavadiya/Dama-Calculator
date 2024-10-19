@@ -200,7 +200,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: SafeArea(
           child: controller.index.value == 0 ? Production()
               : controller.index.value == 1 ?  FabricCostingScreen()
-              : controller.index.value == 2 ? const LabourWork()
+              : controller.index.value == 2 ?  LabourWork()
               : controller.index.value == 3 ? const AboutUs()
               : controller.index.value == 4 ? const ContactUs()
               : controller.index.value == 5 ? Setting() : Production() ,

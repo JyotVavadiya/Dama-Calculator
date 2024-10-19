@@ -1,7 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:damacalculator/screens/labour_work/labour_work_controller.dart';
+import 'package:damacalculator/service/pref_services.dart';
+import 'package:damacalculator/utils/pref_key.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
+
 
 class SignUpController extends GetxController{
 
@@ -24,13 +29,74 @@ class SignUpController extends GetxController{
 
   bool isUser = true;
 
-
-
   Future<void> onTapPickDatePlayer({required BuildContext context}) async {
-
     update(["player"]);
   }
 
 
+
+  signUp(email, pwd, userName, phone, dob) async {
+    try {
+      final credential =
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: pwd,
+      );
+
+      Map<String, dynamic> map2 = {
+        "uid": credential.user?.uid.toString(),
+        "Email": email,
+        "UserName": userName,
+        "Phone": phone,
+        "DOB": dob
+      };
+
+      await PrefService.setValue(PrefKeys.email, email);
+      await PrefService.setValue(PrefKeys.uid, credential.user?.uid.toString());
+
+      //addDataInFirebase(userUid: credential.user?.uid ?? "", map: map2);
+      PrefService.setValue(PrefKeys.isLogin, true);
+
+      LabourWorkController labourWorkController = Get.put(LabourWorkController());
+      labourWorkController.isLogin.value = PrefService.getBool(PrefKeys.isLogin);
+
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        Get.snackbar(  'Error',  // Title
+          'The password provided is too weak!',  // Message
+          snackPosition: SnackPosition.TOP,  // Position at the bottom
+          backgroundColor: Colors.red,  // Background color
+          colorText: Colors.white,  // Text color
+          duration: Duration(seconds: 2), );
+
+      } else if (e.code == 'email-already-in-use') {
+
+        Get.snackbar(  'Error',  // Title
+          'The account already exists for that email!',  // Message
+          snackPosition: SnackPosition.TOP,  // Position at the bottom
+          backgroundColor: Colors.red,  // Background color
+          colorText: Colors.white,  // Text color
+          duration: Duration(seconds: 2), );
+      }
+    } catch (e) {
+      Get.snackbar(  'Error',  // Title
+        '$e',  // Message
+        snackPosition: SnackPosition.TOP,  // Position at the bottom
+        backgroundColor: Colors.red,  // Background color
+        colorText: Colors.white,  // Text color
+        duration: Duration(seconds: 2), );
+    }
+  }
+
+  // addDataInFirebase(
+  //     {required String userUid, required Map<String, dynamic> map}) async {
+  //   final FirebaseFirestore fireStore = FirebaseFirestore.instance;
+  //   await fireStore.collection("Auth").doc(userUid).set(map);
+  //
+  //   PrefService.setValue(PrefKeys.isLogin, true);
+  //
+  //   //Get.to(()=>const DashboardScreen());
+  //
+  // }
 
 }

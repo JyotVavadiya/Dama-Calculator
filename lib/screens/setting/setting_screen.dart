@@ -1,6 +1,7 @@
 import 'package:damacalculator/dashboard/dashboard_controller.dart';
 import 'package:damacalculator/login/login_screen.dart';
 import 'package:damacalculator/screens/edit_profile/edit_profile_screen.dart';
+import 'package:damacalculator/screens/labour_work/labour_work_controller.dart';
 import 'package:damacalculator/screens/setting/setting_controller.dart';
 import 'package:damacalculator/service/pref_services.dart';
 import 'package:damacalculator/utils/color_res.dart';
@@ -121,12 +122,18 @@ class Setting extends StatelessWidget {
                       settingController.index.value = 0;
                       settingController.languageDrop.value = false;
 
+
+
                       var locale = Locale('en', 'US'); // Set to English
                       Get.updateLocale(locale);
+                      PrefService.setValue(PrefKeys.languageCode, 'en');
+                      PrefService.setValue(PrefKeys.countryCode, 'US');
+
+
                     },
                       child: Container(
                         width: Get.width,
-                          child: Text(StringRes.english.tr, style: settingController.index.value == 0 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) : const TextStyle(color: ColorRes.grey),))),
+                          child: Text(StringRes.english, style: settingController.index.value == 0 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) : const TextStyle(color: ColorRes.grey),))),
                   const SizedBox(height: 7,),
                   Divider(thickness: 1, color: Colors.grey.withOpacity(0.4),),
                   const SizedBox(height: 7,),
@@ -136,10 +143,12 @@ class Setting extends StatelessWidget {
                         settingController.languageDrop.value = false;
                         var locale = Locale('hi', 'IN'); // Set to Gujarati
                         Get.updateLocale(locale);
+                        PrefService.setValue(PrefKeys.languageCode, 'hi');
+                        PrefService.setValue(PrefKeys.countryCode, 'IN');
                       },
                       child: Container(
                         width: Get.width,
-                          child: Text(StringRes.hindi.tr, style:  settingController.index.value == 1 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) :const TextStyle(color: ColorRes.grey),))),
+                          child: Text(StringRes.hindi, style:  settingController.index.value == 1 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) :const TextStyle(color: ColorRes.grey),))),
                   const SizedBox(height: 7,),
                   Divider(thickness: 1, color: Colors.grey.withOpacity(0.4),),
                   const SizedBox(height: 7,),
@@ -149,12 +158,14 @@ class Setting extends StatelessWidget {
                         settingController.languageDrop.value = false;
 
                         var locale = Locale('gu', 'IN'); // Set to Gujarati
-                        Get.updateLocale(locale); //
+                        Get.updateLocale(locale);
+                        PrefService.setValue(PrefKeys.languageCode, 'gu');
+                        PrefService.setValue(PrefKeys.countryCode, 'IN');
 
                       },
                       child: SizedBox(
                           width: Get.width,
-                          child: Text(StringRes.gujarati.tr, style:  settingController.index.value == 2 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) :const TextStyle(color: ColorRes.grey),)))
+                          child: Text(StringRes.gujarati, style:  settingController.index.value == 2 ? const TextStyle(color: ColorRes.themColor, fontWeight: FontWeight.w500) :const TextStyle(color: ColorRes.grey),)))
                 ],
               ),
             )
@@ -182,6 +193,8 @@ class Setting extends StatelessWidget {
                           child:  Text("Yes".tr, style: TextStyle(fontSize: 18, color: Colors.black)),
                           onPressed: () {
                              PrefService.setValue(PrefKeys.isLogin, false);
+                             LabourWorkController labourWorkController = Get.put(LabourWorkController());
+                             labourWorkController.isLogin.value = PrefService.getBool(PrefKeys.isLogin);
                              //Get.offAll(LoginScreen());
                             DashboardController dashboardController = Get.put(DashboardController());
                             dashboardController.index.value = 2;

@@ -124,9 +124,12 @@ class LoginScreen extends StatelessWidget {
                           CustomElevatedButton(
                               text: StringRes.login.tr,
                               onPressed: loginController.loader.value ? (){} : () async{
+                                FocusScope.of(context).unfocus();
                                 if (_formKey.currentState!.validate()) {
-                                 Get.to(const DashboardScreen());
-                                 PrefService.setValue(PrefKeys.isLogin, true);
+
+                                 await loginController.signIn(loginController.emailController.text, loginController.passwordController.text);
+
+
 
                                 }
 

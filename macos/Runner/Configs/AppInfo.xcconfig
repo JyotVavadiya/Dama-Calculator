@@ -8,7 +8,7 @@
 PRODUCT_NAME = damacalculator
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.damacalculator
+PRODUCT_BUNDLE_IDENTIFIER = com.damacalculator.app
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.

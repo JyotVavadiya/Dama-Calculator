@@ -24,7 +24,7 @@ final ProductionController controller = Get.put(ProductionController());
         child: Column(
           children: [
             const SizedBox(height: 30),
-            const Text("RPM", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: ColorRes.themColor),),
+             Text("RPM".tr, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: ColorRes.themColor),),
             const SizedBox(height: 20),
             rmp(),
             const SizedBox(height: 30),
