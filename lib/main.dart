@@ -3,7 +3,6 @@ import 'package:damacalculator/service/pref_services.dart';
 import 'package:damacalculator/splash/splash_screen.dart';
 import 'package:damacalculator/utils/pref_key.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,12 +11,13 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
       options: FirebaseOptions(
-          apiKey: "AIzaSyCLw0m2dxqZlUbz9z-BLjZLUQB3FFefHe4",
+          apiKey: "AIzaSyDzfECx32LpqfZZTC9Vu4ptckcdRyK_9Kk",
+          authDomain: "damacalculator.firebaseapp.com",
           projectId: "damacalculator",
           storageBucket: "damacalculator.appspot.com",
           messagingSenderId: "389038085530",
-          appId: "1:389038085530:android:d3aa30da3722dd39f31623",
-
+          appId: "1:389038085530:web:f414537d7ef8f0bcf31623",
+          measurementId: "G-DSZ8BSFBSD"
       )
   );
   await PrefService.init();

@@ -184,6 +184,12 @@ class SignupScreen extends StatelessWidget {
                                       controller.userNameController.text,
                                       controller.mobileNumberController.text,
                                       controller.dateOfBirthController.text);
+
+                                  controller.userNameController.clear();
+                                  controller.mobileNumberController.clear();
+                                  controller.dateOfBirthController.clear();
+                                  controller.emailController.clear();
+                                  controller.passwordController.clear();
                                 }
                               }),
 

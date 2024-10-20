@@ -6,6 +6,7 @@ class PrefKeys {
   static const countryCode = "countryCode";
   static const email = "email";
   static const uid = "uid";
+  static const userName = "userName";
 
 
 }

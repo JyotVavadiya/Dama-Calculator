@@ -63,8 +63,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Obx(() => ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-                decoration: BoxDecoration(
+             DrawerHeader(
+                decoration: const BoxDecoration(
                   color: ColorRes.themColor,
                 ),
 
@@ -72,10 +72,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
 
                   children: [
-                    SizedBox(height: 10),
-                    Icon(Icons.account_circle, color: Colors.white, size: 80),
-                    SizedBox(height: 10),
-                    Text("User name", style: TextStyle(color: Colors.white),)
+                    const SizedBox(height: 10),
+                    const Icon(Icons.account_circle, color: Colors.white, size: 80),
+                    const SizedBox(height: 10),
+                    Text(PrefService.getString(PrefKeys.userName).isEmpty ? "User name" : PrefService.getString(PrefKeys.userName), style: const TextStyle(color: Colors.white),)
                   ],
                 )
             ),
@@ -175,16 +175,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
               builder: (BuildContext context) {
                 return AlertDialog(
                   backgroundColor: Colors.white,
-                  title:  Text("Are you sure you want exit app ?".tr, style: TextStyle(fontSize: 20, color: Colors.black)),
+                  title:  Text("Are you sure you want exit app ?".tr, style: const TextStyle(fontSize: 20, color: Colors.black)),
                   actions: <Widget>[
                     TextButton(
-                      child:  Text("No".tr,style: TextStyle(fontSize: 18, color: Colors.black)),
+                      child:  Text("No".tr,style: const TextStyle(fontSize: 18, color: Colors.black)),
                       onPressed: () {
                         Get.back();
                       },
                     ),
                     TextButton(
-                      child:  Text("Yes".tr, style: TextStyle(fontSize: 18, color: Colors.black)),
+                      child:  Text("Yes".tr, style: const TextStyle(fontSize: 18, color: Colors.black)),
                       onPressed: () {
                         exit(0);
                       },
@@ -197,13 +197,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
           return false;
         },
 
-        child: SafeArea(
-          child: controller.index.value == 0 ? Production()
-              : controller.index.value == 1 ?  FabricCostingScreen()
-              : controller.index.value == 2 ?  LabourWork()
-              : controller.index.value == 3 ? const AboutUs()
-              : controller.index.value == 4 ? const ContactUs()
-              : controller.index.value == 5 ? Setting() : Production() ,
+        child: Obx(
+            ()=> SafeArea(
+            child: controller.index.value == 0 ? Production()
+                : controller.index.value == 1 ?  FabricCostingScreen()
+                : controller.index.value == 2 ?  controller.isLogin.value ? LabourWork() : LoginScreen()
+                : controller.index.value == 3 ? const AboutUs()
+                : controller.index.value == 4 ? const ContactUs()
+                : controller.index.value == 5 ? Setting() : Production() ,
+          ),
         ),
       ),
     ));

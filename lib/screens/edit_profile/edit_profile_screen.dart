@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:damacalculator/commons/custom_elevated_button.dart';
 import 'package:damacalculator/commons/custom_text_form_field.dart';
 import 'package:damacalculator/commons/loaders.dart';
@@ -162,8 +163,26 @@ class EditProfileScreen extends StatelessWidget {
                           ///------ signup button
                           CustomElevatedButton(
                               text: StringRes.update.tr,
-                              onPressed: ()  {
+                              onPressed: ()  async{
+                                FocusScope.of(context).unfocus();
                                       if (_signupformKey.currentState!.validate()) {
+
+                                        controller.loader.value = true;
+
+                                        final FirebaseFirestore fireStore = FirebaseFirestore.instance;
+                                           await fireStore.collection("Auth").doc(PrefService.getString(PrefKeys.uid)).update(
+                                               {
+                                                 "userName": controller.userNameController.text,
+                                                 "email": controller.emailController.text,
+                                                 "phone": controller.mobileNumberController.text,
+                                                 "DOB": controller.dateOfBirthController.text,
+                                               }
+                                           );
+
+                                        await PrefService.setValue(PrefKeys.userName, controller.userNameController.text);
+
+                                           controller.loader.value =false;
+
                                       Get.back();
 
                                       }

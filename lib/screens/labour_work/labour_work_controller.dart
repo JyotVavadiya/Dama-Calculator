@@ -4,13 +4,6 @@ import 'package:get/get.dart';
 
 class LabourWorkController extends GetxController{
 
-  RxBool isLogin = false.obs;
 
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-    isLogin.value = PrefService.getBool(PrefKeys.isLogin);
-  }
 
 }

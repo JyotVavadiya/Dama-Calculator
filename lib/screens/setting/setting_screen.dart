@@ -26,38 +26,45 @@ class Setting extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 40),
-         GestureDetector(
-           onTap: (){
-             Get.to(()=>EditProfileScreen());
-           },
-           child: Container(
-             height: 45,
-             width: Get.width,
-             padding: const EdgeInsets.symmetric(horizontal: 20),
-             alignment: Alignment.centerLeft,
-             decoration: BoxDecoration(
-               color: Colors.white,
-               borderRadius: BorderRadius.circular(10),
 
-               boxShadow: [
-                 BoxShadow(
-                   color: Colors.grey.withOpacity(0.3),
-                   spreadRadius: 2,
-                   blurRadius: 5,
-                   offset: const Offset(0, 3), // changes position of shadow
-                 ),
-               ],
-             ),
-             child:  Row(
-               children: [
-                 Text(StringRes.editProfile.tr, style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 16)),
-                 const Spacer(),
-                 Icon(Icons.edit_outlined, color: Colors.black.withOpacity(0.7),)
-               ],
-             )
-           ),
-         ),
-          const SizedBox(height: 20),
+          PrefService.getBool(PrefKeys.isLogin)
+         ? Column(
+            children: [
+              GestureDetector(
+                onTap: (){
+                  Get.to(()=>EditProfileScreen());
+                },
+                child: Container(
+                    height: 45,
+                    width: Get.width,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child:  Row(
+                      children: [
+                        Text(StringRes.editProfile.tr, style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 16)),
+                        const Spacer(),
+                        Icon(Icons.edit_outlined, color: Colors.black.withOpacity(0.7),)
+                      ],
+                    )
+                ),
+              ),
+              const SizedBox(height: 20),
+            ],
+          ) : SizedBox(),
+
 
           InkWell(
             onTap: (){
@@ -193,11 +200,12 @@ class Setting extends StatelessWidget {
                           child:  Text("Yes".tr, style: TextStyle(fontSize: 18, color: Colors.black)),
                           onPressed: () {
                              PrefService.setValue(PrefKeys.isLogin, false);
-                             LabourWorkController labourWorkController = Get.put(LabourWorkController());
-                             labourWorkController.isLogin.value = PrefService.getBool(PrefKeys.isLogin);
+
+
                              //Get.offAll(LoginScreen());
                             DashboardController dashboardController = Get.put(DashboardController());
                             dashboardController.index.value = 2;
+                             dashboardController.isLogin.value = PrefService.getBool(PrefKeys.isLogin);
                             Get.back();
                           },
                         )

@@ -129,6 +129,9 @@ class LoginScreen extends StatelessWidget {
 
                                  await loginController.signIn(loginController.emailController.text, loginController.passwordController.text);
 
+                                 loginController.emailController.clear();
+                                 loginController.passwordController.clear();
+
 
 
                                 }
