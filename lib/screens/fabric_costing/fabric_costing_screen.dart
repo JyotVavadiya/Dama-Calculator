@@ -45,7 +45,6 @@ feeder(){
         children: [
           SizedBox(height: 15),
           Row(
-
             children: [
               Text("${StringRes.selectNumbersOfFeeder.tr} :-", style: TextStyle(color: Colors.black.withOpacity(0.7), fontWeight: FontWeight.w500),),
               SizedBox(width: 10),
@@ -198,16 +197,35 @@ feeder(){
                                   Obx(
                     ()=> Row(
                                       children: [
-                                        Text("${StringRes.yarn.tr}= ${fabricCostingController.fYarn[index].toStringAsFixed(2)}"),
+                                        Column(
+                                          children: [
+                                            Text("${StringRes.yarn.tr} :"),
+                                            Text("${fabricCostingController.fYarn[index].toStringAsFixed(2)}"),
+                                          ],
+                                        ),
                                         Spacer(),
-                                        Container(height: 12, width: 1, color: ColorRes.themColor,),
+                                        Container(height: 20, width: 1, color: ColorRes.themColor,),
                                         Spacer(),
 
-                                        Text("${StringRes.costOf100m.tr}=  ${fabricCostingController.f100m[index].toStringAsFixed(2)}"),
+
+                                        Column(
+                                          children: [
+                                            Text("${StringRes.costOf100m.tr} :"),
+                                            Text("${fabricCostingController.f100m[index].toStringAsFixed(2)}"),
+                                          ],
+                                        ),
+
                                         Spacer(),
-                                        Container(height: 12, width: 1, color: ColorRes.themColor,),
+                                        Container(height: 20, width: 1, color: ColorRes.themColor,),
                                         Spacer(),
-                                        Text("${StringRes.costOf1m.tr}=  ${fabricCostingController.f1m[index].toStringAsFixed(2)}"),
+
+
+                                        Column(
+                                          children: [
+                                            Text("${StringRes.costOf1m.tr} :"),
+                                            Text("${fabricCostingController.f1m[index].toStringAsFixed(2)}"),
+                                          ],
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -389,16 +407,35 @@ beam(){
                                   Obx(
                                         ()=> Row(
                                       children: [
-                                        Text("${StringRes.yarn.tr}= ${fabricCostingController.bYarn[index].toStringAsFixed(2)}"),
+
+                                        Column(
+                                          children: [
+                                            Text("${StringRes.yarn.tr} :"),
+                                            Text("${fabricCostingController.bYarn[index].toStringAsFixed(2)}"),
+                                          ],
+                                        ),
                                         Spacer(),
-                                        Container(height: 12, width: 1, color: ColorRes.themColor,),
+                                        Container(height: 20, width: 1, color: ColorRes.themColor,),
                                         Spacer(),
 
-                                        Text("${StringRes.costOf100m.tr}=  ${fabricCostingController.b100m[index].toStringAsFixed(2)}"),
+
+                                        Column(
+                                          children: [
+                                            Text("${StringRes.costOf100m.tr} :"),
+                                            Text("${fabricCostingController.b100m[index].toStringAsFixed(2)}"),
+                                          ],
+                                        ),
+
                                         Spacer(),
-                                        Container(height: 12, width: 1, color: ColorRes.themColor,),
+                                        Container(height: 20, width: 1, color: ColorRes.themColor,),
                                         Spacer(),
-                                        Text("${StringRes.costOf1m.tr}=  ${fabricCostingController.b1m[index].toStringAsFixed(2)}"),
+
+                                        Column(
+                                          children: [
+                                            Text("${StringRes.costOf1m.tr} :"),
+                                            Text("${fabricCostingController.b1m[index].toStringAsFixed(2)}"),
+                                          ],
+                                        ),
                                       ],
                                     ),
                                   ),
